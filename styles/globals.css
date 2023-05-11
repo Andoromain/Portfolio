@@ -42,7 +42,10 @@ body {
     rgba(107, 107, 248, 0.8) 100%
   );
 }
-
+.object-cover {
+    -o-object-fit: cover;
+    object-fit: scale-down;
+}
 .gradient-shadow:hover::before {
   content: "";
   z-index: -1;

@@ -16,19 +16,19 @@ const Footer = ({}) => {
             <h1 className="text-3xl tablet:text-6xl laptop:text-6xl laptopl:text-8xl text-bold">
               TOGETHER
             </h1>
-            <Button type="primary">Schedule a call</Button>
+            <Button type="primary">+261 34 79 237 18</Button>
             <div className="mt-10">
               <Socials />
             </div>
           </div>
         </div>
       </div>
-      <h1 className="text-sm text-bold mt-2 laptop:mt-10 p-2 laptop:p-0">
+      {/* <h1 className="text-sm text-bold mt-2 laptop:mt-10 p-2 laptop:p-0">
         Made With ❤ by{" "}
         <Link href="http://www.chetanverma.com">
           <a className="underline underline-offset-1">Chetan Verma</a>
         </Link>
-      </h1>
+      </h1> */}
     </>
   );
 };

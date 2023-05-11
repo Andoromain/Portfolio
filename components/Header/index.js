@@ -4,7 +4,7 @@ import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
 import Button from "../Button";
 // Local Data
-import data from "../../data/portfolio.json";
+import data from "../../data/portfolioAndo.json";
 
 const Header = ({ handleWorkScroll, handleAboutScroll, isBlog }) => {
   const router = useRouter();
@@ -69,23 +69,20 @@ const Header = ({ handleWorkScroll, handleAboutScroll, isBlog }) => {
             >
               {!isBlog ? (
                 <div className="grid grid-cols-1">
-                  <Button onClick={handleWorkScroll}>Work</Button>
-                  <Button onClick={handleAboutScroll}>About</Button>
-                  {showBlog && (
-                    <Button onClick={() => router.push("/blog")}>Blog</Button>
-                  )}
+                  <Button onClick={handleWorkScroll}>Projet</Button>
+                  <Button onClick={handleAboutScroll}>A propos</Button>
                   {showResume && (
                     <Button
                       onClick={() =>
                         window.open("mailto:hello@chetanverma.com")
                       }
                     >
-                      Resume
+                      C.V
                     </Button>
                   )}
 
                   <Button
-                    onClick={() => window.open("mailto:hello@chetanverma.com")}
+                    onClick={handleAboutScroll}
                   >
                     Contact
                   </Button>
@@ -103,12 +100,12 @@ const Header = ({ handleWorkScroll, handleAboutScroll, isBlog }) => {
                       onClick={() => router.push("/resume")}
                       classes="first:ml-1"
                     >
-                      Resume
+                      C.V
                     </Button>
                   )}
 
                   <Button
-                    onClick={() => window.open("mailto:hello@chetanverma.com")}
+                    onClick={handleAboutScroll}
                   >
                     Contact
                   </Button>
@@ -131,7 +128,7 @@ const Header = ({ handleWorkScroll, handleAboutScroll, isBlog }) => {
         </h1>
         {!isBlog ? (
           <div className="flex">
-            <Button onClick={handleWorkScroll}>Work</Button>
+            <Button onClick={handleWorkScroll}>Projet</Button>
             <Button onClick={handleAboutScroll}>About</Button>
             {showBlog && (
               <Button onClick={() => router.push("/blog")}>Blog</Button>
@@ -145,7 +142,7 @@ const Header = ({ handleWorkScroll, handleAboutScroll, isBlog }) => {
               </Button>
             )}
 
-            <Button onClick={() => window.open("mailto:hello@chetanverma.com")}>
+            <Button onClick={handleAboutScroll}>
               Contact
             </Button>
             {mounted && theme && data.darkMode && (
@@ -174,7 +171,7 @@ const Header = ({ handleWorkScroll, handleAboutScroll, isBlog }) => {
               </Button>
             )}
 
-            <Button onClick={() => window.open("mailto:hello@chetanverma.com")}>
+            <Button onClick={handleAboutScroll}>
               Contact
             </Button>
 

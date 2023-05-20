@@ -2,7 +2,7 @@
     "name": "Ando Romain",
     "headerTaglineOne": "Bonjour 👋",
     "headerTaglineTwo": "Je suis Ando Romain RAZAFINANDRASANA",
-    "headerTaglineThree": "Developper web",
+    "headerTaglineThree": "Developpeur web",
     "headerTaglineFour": "",
     "showBlog": false,
     "darkMode": true,
@@ -41,7 +41,7 @@
             "title": "Projet Gestion Bancaire",
             "description": "Development web avec Django",
             "imageSrc": "https://gestionuserandoromain.000webhostapp.com/public/gestionbanc.png",
-            "url": "http://andoajpr.pythonanywhere.com/"
+            "url": "https://andoajpr.pythonanywhere.com/"
         },
         {
             "id": "3",
@@ -56,6 +56,13 @@
             "description": "Development web avec React et Laravel",
             "imageSrc": "https://gestionuserandoromain.000webhostapp.com/public/gestionuser.png",
             "url": "https://ando-razafinandrasana.netlify.app/"
+        },
+           {
+            "id": "5",
+            "title": "Project Gestion de materiels informatique et vente de materiel ",
+            "description": "Development web avec Python/Django",
+            "imageSrc": "https://gestionuserandoromain.000webhostapp.com/public/ventemat.png",
+            "url": "https://andoaromain.pythonanywhere.com/"
         }
     ],
     "services": [

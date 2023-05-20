@@ -48,14 +48,14 @@
             "title": "Project Gestion Archives et courriers",
             "description": "Development web avec Laravel",
             "imageSrc": "https://gestionuserandoromain.000webhostapp.com/public/gestionarchiv.png",
-            "url": "https://app.infinityfree.net/accounts"
+            "url": "https://ando-razafinandrasana.netlify.app/"
         },
         {
             "id": "4",
             "title": "Project Gestion des utilisateurs ",
             "description": "Development web avec React et Laravel",
             "imageSrc": "https://gestionuserandoromain.000webhostapp.com/public/gestionuser.png",
-            "url": "https://ando-razafinandrasana.netlify.app/"
+            "url": "https://gestion-utilisateur.netlify.app/"
         },
            {
             "id": "5",

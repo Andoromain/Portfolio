@@ -1,4 +1,4 @@
-import { useRef } from "react";
+import { useRef, useEffect  } from "react";
 import Header from "../components/Header";
 import ServiceCard from "../components/ServiceCard";
 import Socials from "../components/Socials";
@@ -23,6 +23,40 @@ export default function Home() {
   const textThree = useRef();
   const textFour = useRef();
 
+
+  useEffect(() => {
+    // Your JavaScript code
+    (function () {
+      window.sib = {
+        equeue: [],
+        client_key: "vh5j3ooge12oidmnf1e2cnrm"
+      };
+
+      /* OPTIONAL: email for identify request*/
+      // window.sib.email_id = 'example@domain.com';
+
+      window.sendinblue = {};
+      for (var j = ['track', 'identify', 'trackLink', 'page'], i = 0; i < j.length; i++) {
+        (function (k) {
+          window.sendinblue[k] = function () {
+            var arg = Array.prototype.slice.call(arguments);
+            (window.sib[k] || function () {
+              var t = {};
+              t[k] = arg;
+              window.sib.equeue.push(t);
+            })(arg[0], arg[1], arg[2]);
+          };
+        })(j[i]);
+      }
+
+      var n = document.createElement("script"),
+        i = document.getElementsByTagName("script")[0];
+      n.type = "text/javascript", n.id = "sendinblue-js",
+        n.async = true, n.src = "https://sibautomation.com/sa.js?key=" + window.sib.client_key,
+        i.parentNode.insertBefore(n, i), window.sendinblue.page();
+    })();
+  }, []); 
+  
   // Handling Scroll
   const handleWorkScroll = () => {
     window.scrollTo({

@@ -1,11 +1,15 @@
 import "../styles/globals.css";
 import { ThemeProvider } from "next-themes";
+import Script from "next/script";
 
 const App = ({ Component, pageProps }) => {
   return (
-    <ThemeProvider>
-      <Component {...pageProps} />
-    </ThemeProvider>
+    <>
+      <Script src="//web.webpushs.com/js/push/edfda228f62ea629c72b26849bc50dde_1.js" strategy="beforeInteractive" />
+      <ThemeProvider>
+        <Component {...pageProps} />
+      </ThemeProvider>
+    </>
   );
 };
 

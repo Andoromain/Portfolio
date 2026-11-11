@@ -1,28 +1,24 @@
-import { useRef, useEffect  } from "react";
+import { useRef, useEffect } from "react";
+import Head from "next/head";
+import Link from "next/link";
 import Header from "../components/Header";
-import ServiceCard from "../components/ServiceCard";
 import Socials from "../components/Socials";
 import WorkCard from "../components/WorkCard";
+import Footer from "../components/Footer";
+import Button from "../components/Button";
+import Cursor from "../components/Cursor";
 import { useIsomorphicLayoutEffect } from "../utils";
 import { stagger } from "../animations";
-import Footer from "../components/Footer";
-import Head from "next/head";
-import Button from "../components/Button";
-import Link from "next/link";
-import Cursor from "../components/Cursor";
 
 // Local Data
 import data from "../data/portfolioAndo.json";
 
 export default function Home() {
-  // Ref
-  const workRef = useRef();
-  const aboutRef = useRef();
   const textOne = useRef();
   const textTwo = useRef();
   const textThree = useRef();
   const textFour = useRef();
-
+  const actions = useRef();
 
   useEffect(() => {
     // Your JavaScript code
@@ -57,118 +53,150 @@ export default function Home() {
     })();
   }, []); 
   
-  // Handling Scroll
-  const handleWorkScroll = () => {
-    window.scrollTo({
-      top: workRef.current.offsetTop,
-      left: 0,
-      behavior: "smooth",
-    });
-  };
-
-  const handleAboutScroll = () => {
-    window.scrollTo({
-      top: aboutRef.current.offsetTop,
-      left: 0,
-      behavior: "smooth",
-    });
-  };
-
   useIsomorphicLayoutEffect(() => {
-    stagger(
-      [textOne.current, textTwo.current, textThree.current, textFour.current],
-      { y: 40, x: -10, transform: "scale(0.95) skew(10deg)" },
-      { y: 0, x: 0, transform: "scale(1)" }
-    );
+    stagger([
+      textOne.current,
+      textTwo.current,
+      textThree.current,
+      textFour.current,
+      actions.current,
+    ]);
   }, []);
 
+  const sectionLabel =
+    "text-sm font-medium uppercase tracking-[0.05em] text-slate-500 dark:text-slate-400";
+
   return (
-    <div className={`relative ${data.showCursor && "cursor-none"}`}>
+    <div className={`relative ${data.showCursor ? "cursor-none" : ""}`}>
       {data.showCursor && <Cursor />}
       <Head>
-        <title>{data.name}</title>
+        <title>{`${data.name} RAZAFINANDRASANA · Développeur Full Stack`}</title>
+        <meta name="description" content={data.headerTaglineFour} />
       </Head>
+      <div className="gradient-circle" aria-hidden="true"></div>
+      <div className="gradient-circle-bottom" aria-hidden="true"></div>
 
-      <div className="gradient-circle"></div>
-      <div className="gradient-circle-bottom"></div>
+      <div className="container">
+        <Header />
 
-      <div className="container mx-auto mb-10">
-        <Header
-          handleWorkScroll={handleWorkScroll}
-          handleAboutScroll={handleAboutScroll}
-        />
-        <div className="laptop:mt-20 mt-10">
-          <div className="mt-5">
+        <main>
+          <section aria-labelledby="hero-titre" className="pt-12 laptop:pt-24">
             <h1
-              ref={textOne}
-              className="text-3xl tablet:text-6xl laptop:text-6xl laptopl:text-8xl p-1 tablet:p-2 text-bold w-4/5 mob:w-full laptop:w-4/5"
+              id="hero-titre"
+              className="max-w-5xl break-words text-[1.75rem] font-medium mob:text-[2rem] leading-[1.1] tracking-[-0.02em] tablet:text-6xl laptopl:text-7xl"
             >
-              {data.headerTaglineOne}
+              <span ref={textOne} className="block">
+                {data.headerTaglineOne}
+              </span>
+              <span ref={textTwo} className="block">
+                {data.headerTaglineTwo}
+              </span>
+              <span
+                ref={textThree}
+                className="block text-slate-500 dark:text-slate-400"
+              >
+                {data.headerTaglineThree}
+              </span>
             </h1>
-            <h1
-              ref={textTwo}
-              className="text-3xl tablet:text-6xl laptop:text-6xl laptopl:text-8xl p-1 tablet:p-2 text-bold w-full laptop:w-4/5"
-            >
-              {data.headerTaglineTwo}
-            </h1>
-            <h1
-              ref={textThree}
-              className="text-3xl tablet:text-6xl laptop:text-6xl laptopl:text-8xl p-1 tablet:p-2 text-bold w-full laptop:w-4/5"
-            >
-              {data.headerTaglineThree}
-            </h1>
-            <h1
+            <p
               ref={textFour}
-              className="text-3xl tablet:text-6xl laptop:text-6xl laptopl:text-8xl p-1 tablet:p-2 text-bold w-full laptop:w-4/5"
+              className="muted mt-6 max-w-2xl text-lg leading-relaxed laptop:text-xl"
             >
               {data.headerTaglineFour}
-            </h1>
-          </div>
+            </p>
+            <div ref={actions} className="mt-8">
+              <div className="flex flex-wrap gap-3">
+                <Button type="primary" href="#projets">
+                  Voir mes projets
+                </Button>
+                {data.showResume && (
+                  <Link href="/resume">
+                    <a className="btn btn-outline">Consulter mon CV</a>
+                  </Link>
+                )}
+              </div>
+              <Socials className="mt-6" />
+            </div>
+          </section>
 
-          <Socials className="mt-2 laptop:mt-5" />
-        </div>
-        <div className="mt-10 laptop:mt-30 p-2 laptop:p-0" ref={workRef}>
-          <h1 className="text-2xl text-bold">Projet.</h1>
+          <section
+            id="projets"
+            aria-labelledby="projets-titre"
+            className="mt-24 laptop:mt-32"
+          >
+            <h2 id="projets-titre" className={sectionLabel}>
+              Projets
+            </h2>
+            <p className="mt-4 max-w-2xl text-3xl font-medium leading-tight tracking-[-0.01em] laptop:text-4xl">
+              Une sélection de ce que j’ai construit, du projet client au jeu
+              open source.
+            </p>
 
-          <div className="mt-5 laptop:mt-10 grid grid-cols-1 tablet:grid-cols-2 gap-4">
-            {data.projects.map((project) => (
-              <WorkCard
-                key={project.id}
-                img={project.imageSrc}
-                name={project.title}
-                description={project.description}
-                onClick={() => project.url && window.open(project.url)}
-              />
-            ))}
-          </div>
-        </div>
-{/* 
-        <div className="mt-10 laptop:mt-30 p-2 laptop:p-0">
-          <h1 className="tablet:m-10 text-2xl text-bold">Services.</h1>
-          <div className="mt-5 tablet:m-10 grid grid-cols-1 laptop:grid-cols-2 gap-6">
-            {data.services.map((service, index) => (
-              <ServiceCard
-                key={index}
-                name={service.title}
-                description={service.description}
-              />
-            ))}
-          </div>
-        </div> */}
+            <ul className="mt-12 grid grid-cols-1 gap-x-8 gap-y-16 tablet:grid-cols-2">
+              {data.projects.map((project) => (
+                <li key={project.id}>
+                  <WorkCard project={project} />
+                </li>
+              ))}
+            </ul>
+
+            {data.otherProjects && data.otherProjects.length > 0 && (
+              <div className="mt-20">
+                <h3 className="text-xl font-medium">Projets plus anciens</h3>
+                <ul className="mt-4 border-t border-slate-200 dark:border-slate-800">
+                  {data.otherProjects.map((project) => (
+                    <li
+                      key={project.title}
+                      className="border-b border-slate-200 dark:border-slate-800"
+                    >
+                      <a
+                        href={project.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex flex-wrap items-baseline justify-between gap-x-6 gap-y-1 py-4 transition-colors duration-150 ease-out hover:text-slate-600 dark:hover:text-slate-300"
+                      >
+                        <span className="text-lg font-medium">
+                          {project.title}
+                          <span aria-hidden="true"> ↗</span>
+                          <span className="sr-only">
+                            {" "}
+                            (s’ouvre dans un nouvel onglet)
+                          </span>
+                        </span>
+                        <span className="muted text-base">
+                          {project.description}
+                        </span>
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
+          </section>
+
+          <section
+            id="a-propos"
+            aria-labelledby="a-propos-titre"
+            className="mt-24 laptop:mt-40"
+          >
+            <h2 id="a-propos-titre" className={sectionLabel}>
+              À propos
+            </h2>
+            <p className="mt-4 max-w-3xl text-2xl leading-[1.4] laptop:text-3xl">
+              {data.aboutpara}
+            </p>
+          </section>
+        </main>
+
         {/* This button should not go into production */}
         {process.env.NODE_ENV === "development" && (
-          <div className="fixed bottom-5 right-5">
+          <div className="fixed bottom-5 right-5 z-30">
             <Link href="/edit">
-              <Button type="primary">Modifier Données</Button>
+              <a className="btn btn-primary">Modifier les données</a>
             </Link>
           </div>
         )}
-        <div className="mt-10 laptop:mt-40 p-2 laptop:p-0" ref={aboutRef}>
-          <h1 className="tablet:m-10 text-2xl text-bold">A propos.</h1>
-          <p className="tablet:m-10 mt-2 text-xl laptop:text-3xl w-full laptop:w-3/5">
-            {data.aboutpara}
-          </p>
-        </div>
+
         <Footer />
       </div>
     </div>

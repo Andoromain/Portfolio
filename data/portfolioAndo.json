@@ -1,9 +1,9 @@
 {
     "name": "Ando Romain",
     "headerTaglineOne": "Bonjour 👋",
-    "headerTaglineTwo": "Je suis Ando Romain RAZAFINANDRASANA",
-    "headerTaglineThree": "Développeur Full Stack",
-    "headerTaglineFour": "Laravel · Vue.js · React · TypeScript",
+    "headerTaglineTwo": "Je suis Ando Romain RAZAFINANDRASANA,",
+    "headerTaglineThree": "développeur Full Stack.",
+    "headerTaglineFour": "Je conçois des applications web et mobiles de bout en bout, du back-end Laravel aux interfaces Vue.js et React.",
     "showBlog": false,
     "darkMode": true,
     "socials": [
@@ -19,7 +19,7 @@
         },
         {
             "id": "3",
-            "title": "Email",
+            "title": "E-mail",
             "link": "mailto:andoajpr@gmail.com"
         },
         {
@@ -30,74 +30,101 @@
     ],
     "projects": [
         {
+            "id": "1",
             "title": "AMIH Caisse",
-            "description": "Gestion de caisse des micro-projets : Laravel 13, Inertia, React 19, TypeScript, MUI, PWA et APK Android",
-            "imageSrc": "/images/projects/amih-caisse.svg",
+            "description": "Gestion de caisse des micro-projets de l’AMIH : déblocages de fonds, caisses, journal, personnel et tableau de bord. Rôles et permissions, journal d’audit, sauvegardes chiffrées, exports Excel et PDF.",
+            "tags": [
+                "Laravel 13",
+                "Inertia",
+                "React 19",
+                "TypeScript",
+                "MUI",
+                "PWA / Android"
+            ],
+            "imageSrc": "/images/projects/amih-caisse.webp",
+            "imageAlt": "Tableau de bord d’AMIH Caisse : montants nets, débloqués et soldes par micro-projet",
             "url": "",
-            "id": "1"
+            "status": "Projet client"
         },
         {
+            "id": "2",
             "title": "TO Port",
-            "description": "Portage Android non officiel d'un jeu PC (projet de fan) : Wine, Box64, DXVK/Vulkan, Java/NDK, GitLab CI",
+            "description": "Portage Android non officiel d’un jeu PC Windows de 2005, projet de fan. Le jeu tourne sur ARM64 grâce à Wine et Box64, et son rendu DirectX 9 est traduit en Vulkan. 60 FPS sur Snapdragon 8 Gen 1.",
+            "tags": [
+                "Android",
+                "Java / NDK",
+                "Wine",
+                "Box64",
+                "DXVK / Vulkan",
+                "GitLab CI"
+            ],
             "imageSrc": "/images/projects/to-port.svg",
+            "imageAlt": "",
             "url": "",
-            "id": "2"
+            "status": "Projet personnel"
         },
         {
+            "id": "3",
             "title": "Family Dépense",
-            "description": "Application PWA de budget familial hors ligne : React, TypeScript, Dexie, Supabase, Recharts",
-            "imageSrc": "/images/projects/family-depense.svg",
+            "description": "Application PWA de budget familial qui fonctionne hors ligne : transactions, budgets, objectifs d’épargne, rapports, import bancaire CSV, sauvegarde Google Drive et verrouillage par code PIN.",
+            "tags": [
+                "React",
+                "TypeScript",
+                "Vite",
+                "Dexie",
+                "Supabase",
+                "Recharts"
+            ],
+            "imageSrc": "/images/projects/family-depense.webp",
+            "imageAlt": "Tableau de bord de Family Dépense : solde actuel, entrées et dépenses du mois, évolution sur 6 mois",
             "url": "",
-            "id": "3"
+            "status": "Projet personnel"
         },
         {
-            "title": "Plateforme SDA — DFC Mada",
-            "description": "Modules client, ticket, social, administratif et juridique : Laravel, Vue 3, Inertia, Vuetify",
+            "id": "4",
+            "title": "Plateforme SDA",
+            "description": "Modules métier développés chez Trilogy Consulting pour DFC Mada : client, ticket, social, administratif et juridique. Connexion Microsoft, notifications en temps réel et chatbot.",
+            "tags": [
+                "Laravel",
+                "Vue 3",
+                "Inertia",
+                "Vuetify",
+                "Pusher",
+                "SSO Microsoft"
+            ],
             "imageSrc": "/images/projects/plateforme-sda.svg",
+            "imageAlt": "",
             "url": "",
-            "id": "4"
+            "status": "Trilogy Consulting"
         },
         {
-            "title": "Jeux malgaches",
-            "description": "Fanorona, Fanorona Telo et Katro jouables sur le web : React, TypeScript",
-            "imageSrc": "/images/projects/jeux-malgaches.svg",
-            "url": "https://github.com/andoajpr2/JEUX-FANORONA",
-            "id": "5"
+            "id": "5",
+            "title": "Katro",
+            "description": "Le jeu de semailles des hauts plateaux malgaches, jouable contre une IA réglable en trois niveaux (minimax avec élagage alpha-bêta).",
+            "tags": [
+                "React",
+                "TypeScript",
+                "Vite",
+                "IA minimax"
+            ],
+            "imageSrc": "/images/projects/katro.webp",
+            "imageAlt": "Partie de Katro en cours : plateau de 32 trous et panneau de l’IA",
+            "url": "https://github.com/andoajpr2/JEUX-KATRO",
+            "status": "Open source"
         },
         {
             "id": "6",
-            "title": "Projet IHM",
-            "description": "Web Design",
-            "imageSrc": "https://s3-alpha.figma.com/hub/file/3374196297/c0221c7c-0b56-476d-ae95-fd77d40ed04e-cover.png",
-            "url": "https://www.figma.com/community/file/1231024699160927123"
-        },
-        {
-            "id": "7",
-            "title": "Projet Gestion Bancaire",
-            "description": "Développement web avec Django",
-            "imageSrc": "/images/projects/gestion-bancaire.svg",
-            "url": "https://andoajpr.pythonanywhere.com/"
-        },
-        {
-            "id": "8",
-            "title": "Projet Gestion Archives et courriers",
-            "description": "Développement web avec Laravel",
-            "imageSrc": "/images/projects/archives-courriers.svg",
-            "url": "http://gestion-archives-et-courriers-gitww-andoajpr-dev.apps.sandbox-m2.ll9k.p1.openshiftapps.com/public/"
-        },
-        {
-            "id": "9",
-            "title": "Projet Gestion des utilisateurs",
-            "description": "Développement web avec React et Laravel",
-            "imageSrc": "/images/projects/gestion-utilisateurs.svg",
-            "url": "https://gestion-utilisateur.netlify.app/"
-        },
-        {
-            "id": "10",
-            "title": "Projet Gestion de matériel informatique et vente de matériel",
-            "description": "Développement web avec Python/Django",
-            "imageSrc": "/images/projects/materiel-informatique.svg",
-            "url": "https://andoromain.pythonanywhere.com/"
+            "title": "Fanorona",
+            "description": "Le jeu de stratégie national de Madagascar, avec ses règles de capture par approche et par retrait, et sa variante Fanoron-telo.",
+            "tags": [
+                "React",
+                "TypeScript",
+                "Vite"
+            ],
+            "imageSrc": "/images/projects/fanorona.webp",
+            "imageAlt": "Plateau de Fanorona Tsivy avec les pions noirs et blancs en position de départ",
+            "url": "https://github.com/andoajpr2/JEUX-FANORONA",
+            "status": "Open source"
         }
     ],
     "services": [],
@@ -152,5 +179,34 @@
             "Figma"
         ]
     },
-    "showResume": true
+    "showResume": true,
+    "phone": "+261 34 79 237 18",
+    "email": "andoajpr@gmail.com",
+    "otherProjects": [
+        {
+            "title": "Projet IHM",
+            "description": "Maquette d’interface sur Figma",
+            "url": "https://www.figma.com/community/file/1231024699160927123"
+        },
+        {
+            "title": "Gestion bancaire",
+            "description": "Application web en Django",
+            "url": "https://andoajpr.pythonanywhere.com/"
+        },
+        {
+            "title": "Gestion des archives et du courrier",
+            "description": "Application web en Laravel",
+            "url": "https://github.com/Andoromain/Gestion-Archives-et-courriers"
+        },
+        {
+            "title": "Gestion des utilisateurs",
+            "description": "React et Laravel",
+            "url": "https://gestion-utilisateur.netlify.app/"
+        },
+        {
+            "title": "Matériel informatique et vente",
+            "description": "Application web en Python et Django",
+            "url": "https://andoromain.pythonanywhere.com/"
+        }
+    ]
 }

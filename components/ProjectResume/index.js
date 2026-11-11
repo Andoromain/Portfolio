@@ -6,19 +6,17 @@ const ProjectResume = ({ dates, type, position, bullets }) => {
     : (bullets || "").split(",").filter((bullet) => bullet.trim());
 
   return (
-    <div className="mt-5 w-full flex mob:flex-col desktop:flex-row justify-between">
-      <div className="text-lg w-2/5">
-        <h2>{dates}</h2>
-        <h3 className="text-sm opacity-50">{type}</h3>
+    <div className="mt-6 grid gap-2 tablet:grid-cols-[minmax(0,1fr)_minmax(0,2fr)] tablet:gap-8">
+      <div>
+        <p className="text-base tabular-nums">{dates}</p>
+        <p className="text-sm text-slate-500 dark:text-slate-400">{type}</p>
       </div>
-      <div className="w-3/5">
-        <h2 className="text-lg font-bold">{position}</h2>
-        {bulletsLocal && bulletsLocal.length > 0 && (
-          <ul className="list-disc">
+      <div>
+        <h3 className="text-lg font-medium leading-snug">{position}</h3>
+        {bulletsLocal.length > 0 && (
+          <ul className="muted mt-2 list-disc space-y-1.5 pl-5 text-base leading-relaxed">
             {bulletsLocal.map((bullet, index) => (
-              <li key={index} className="text-sm my-1 opacity-70">
-                {bullet}
-              </li>
+              <li key={index}>{bullet}</li>
             ))}
           </ul>
         )}

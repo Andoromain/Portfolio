@@ -1,133 +1,128 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
+import Head from "next/head";
+import Link from "next/link";
 import { useRouter } from "next/router";
 import Cursor from "../components/Cursor";
 import Header from "../components/Header";
 import ProjectResume from "../components/ProjectResume";
 import Socials from "../components/Socials";
-import Button from "../components/Button";
-import { useTheme } from "next-themes";
+import Footer from "../components/Footer";
 // Data
-import { name, showResume } from "../data/portfolioAndo.json";
-import { resume } from "../data/portfolioAndo.json";
 import data from "../data/portfolioAndo.json";
+
+const SkillGroup = ({ title, items }) =>
+  items && items.length > 0 ? (
+    <div>
+      <h3 className="text-base font-medium">{title}</h3>
+      <ul className="mt-3 flex flex-wrap gap-2">
+        {items.map((item) => (
+          <li
+            key={item}
+            className="whitespace-nowrap rounded-full bg-slate-100 px-3 py-1 text-sm text-slate-700 dark:bg-slate-900 dark:text-slate-300"
+          >
+            {item}
+          </li>
+        ))}
+      </ul>
+    </div>
+  ) : null;
 
 const Resume = () => {
   const router = useRouter();
-  const theme = useTheme();
-  const [mount, setMount] = useState(false);
+  const { name, showResume, resume } = data;
 
   useEffect(() => {
-    setMount(true);
     if (!showResume) {
       router.push("/");
     }
-  }, []);
+  }, [showResume, router]);
+
+  const sectionTitle =
+    "text-sm font-medium uppercase tracking-[0.05em] text-slate-500 dark:text-slate-400";
+
   return (
-    <>
-      {process.env.NODE_ENV === "development" && (
-        <div className="fixed bottom-6 right-6">
-          <Button onClick={() => router.push("/edit")} type={"primary"}>
-            Edit Resume
-          </Button>
-        </div>
-      )}
+    <div className={data.showCursor ? "cursor-none" : ""}>
       {data.showCursor && <Cursor />}
-      <div
-        className={`container mx-auto mb-10 ${
-          data.showCursor && "cursor-none"
-        }`}
-      >
-        <Header isBlog />
-        {mount && (
-          <div className="mt-10 w-full flex flex-col items-center">
-            <div
-              className={`w-full ${
-                mount && theme.theme === "dark" ? "bg-slate-800" : "bg-gray-50"
-              } max-w-4xl p-20 mob:p-5 desktop:p-20 rounded-lg shadow-sm`}
-            >
-              <h1 className="text-3xl font-bold">{name}</h1>
-              <h2 className="text-xl mt-5">{resume.tagline}</h2>
-              <h2 className="w-4/5 text-xl mt-5 opacity-50">
-                {resume.description}
-              </h2>
-              <div className="mt-2">
-                <Socials />
-              </div>
-              <div className="mt-5">
-                <h1 className="text-2xl font-bold">Experience</h1>
+      <Head>
+        <title>{`CV · ${name} RAZAFINANDRASANA`}</title>
+      </Head>
 
-                {resume.experiences.map(
-                  ({ id, dates, type, position, bullets }) => (
-                    <ProjectResume
-                      key={id}
-                      dates={dates}
-                      type={type}
-                      position={position}
-                      bullets={bullets}
-                    ></ProjectResume>
-                  )
-                )}
-              </div>
-              <div className="mt-5">
-                <h1 className="text-2xl font-bold">Education</h1>
-                <div className="mt-2">
-                  <h2 className="text-lg">{resume.education.universityName}</h2>
-                  <h3 className="text-sm opacity-75">
-                    {resume.education.universityDate}
-                  </h3>
-                  <p className="text-sm mt-2 opacity-50">
-                    {resume.education.universityPara}
-                  </p>
-                </div>
-              </div>
-              <div className="mt-5">
-                <h1 className="text-2xl font-bold">Skills</h1>
-                <div className="flex mob:flex-col desktop:flex-row justify-between">
-                  {resume.languages && (
-                    <div className="mt-2 mob:mt-5">
-                      <h2 className="text-lg">Languages</h2>
-                      <ul className="list-disc">
-                        {resume.languages.map((language, index) => (
-                          <li key={index} className="ml-5 py-2">
-                            {language}
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                  )}
+      <div className="container">
+        <Header />
 
-                  {resume.frameworks && (
-                    <div className="mt-2 mob:mt-5">
-                      <h2 className="text-lg">Frameworks</h2>
-                      <ul className="list-disc">
-                        {resume.frameworks.map((framework, index) => (
-                          <li key={index} className="ml-5 py-2">
-                            {framework}
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                  )}
+        <main className="mx-auto mt-10 max-w-4xl rounded-3xl bg-slate-50 p-6 tablet:p-12 laptop:p-16 dark:bg-slate-900/60">
+          <h1 className="break-words text-[1.75rem] font-medium mob:text-[2rem] leading-[1.1] tracking-[-0.02em] tablet:text-5xl">
+            {name} RAZAFINANDRASANA
+          </h1>
+          <p className="mt-4 text-xl leading-snug">{resume.tagline}</p>
+          <p className="muted mt-3 max-w-2xl text-lg leading-relaxed">
+            {resume.description}
+          </p>
+          <Socials className="mt-6" />
 
-                  {resume.others && (
-                    <div className="mt-2 mob:mt-5">
-                      <h2 className="text-lg">Others</h2>
-                      <ul className="list-disc">
-                        {resume.others.map((other, index) => (
-                          <li key={index} className="ml-5 py-2">
-                            {other}
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                  )}
-                </div>
+          <section aria-labelledby="cv-experience" className="mt-14">
+            <h2 id="cv-experience" className={sectionTitle}>
+              Expérience
+            </h2>
+            {resume.experiences.map(({ id, dates, type, position, bullets }) => (
+              <ProjectResume
+                key={id}
+                dates={dates}
+                type={type}
+                position={position}
+                bullets={bullets}
+              />
+            ))}
+          </section>
+
+          <section aria-labelledby="cv-formation" className="mt-14">
+            <h2 id="cv-formation" className={sectionTitle}>
+              Formation
+            </h2>
+            <div className="mt-6 grid gap-2 tablet:grid-cols-[minmax(0,1fr)_minmax(0,2fr)] tablet:gap-8">
+              <p className="text-base text-slate-500 tabular-nums dark:text-slate-400">
+                {resume.education.universityDate}
+              </p>
+              <div>
+                <h3 className="text-lg font-medium leading-snug">
+                  {resume.education.universityName}
+                </h3>
+                <p className="muted mt-1 text-base leading-relaxed">
+                  {resume.education.universityPara}
+                </p>
               </div>
             </div>
-          </div>
-        )}
+          </section>
+
+          <section aria-labelledby="cv-competences" className="mt-14">
+            <h2 id="cv-competences" className={sectionTitle}>
+              Compétences
+            </h2>
+            <div className="mt-6 grid gap-8 tablet:grid-cols-3">
+              <SkillGroup title="Langages" items={resume.languages} />
+              <SkillGroup title="Frameworks" items={resume.frameworks} />
+              <SkillGroup title="Outils" items={resume.others} />
+            </div>
+          </section>
+
+          <p className="mt-14">
+            <Link href="/#projets">
+              <a className="text-link text-base">Voir mes projets</a>
+            </Link>
+          </p>
+        </main>
+
+        <Footer />
       </div>
-    </>
+
+      {process.env.NODE_ENV === "development" && (
+        <div className="fixed bottom-6 right-6 z-30">
+          <Link href="/edit">
+            <a className="btn btn-primary">Modifier le CV</a>
+          </Link>
+        </div>
+      )}
+    </div>
   );
 };
 

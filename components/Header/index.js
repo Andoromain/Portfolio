@@ -1,194 +1,157 @@
 import { Popover } from "@headlessui/react";
 import { useTheme } from "next-themes";
-import { useRouter } from "next/router";
+import Link from "next/link";
 import React, { useEffect, useState } from "react";
-import Button from "../Button";
 // Local Data
 import data from "../../data/portfolioAndo.json";
 
-const Header = ({ handleWorkScroll, handleAboutScroll, isBlog }) => {
-  const router = useRouter();
-  const { theme, setTheme } = useTheme();
+const SunIcon = () => (
+  <svg
+    width="20"
+    height="20"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="1.75"
+    strokeLinecap="round"
+    aria-hidden="true"
+  >
+    <circle cx="12" cy="12" r="4" />
+    <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41" />
+  </svg>
+);
+
+const MoonIcon = () => (
+  <svg
+    width="20"
+    height="20"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="1.75"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    aria-hidden="true"
+  >
+    <path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8Z" />
+  </svg>
+);
+
+const MenuIcon = ({ open }) => (
+  <svg
+    width="22"
+    height="22"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="1.75"
+    strokeLinecap="round"
+    aria-hidden="true"
+  >
+    {open ? (
+      <path d="M6 6l12 12M18 6L6 18" />
+    ) : (
+      <path d="M4 7h16M4 12h16M4 17h16" />
+    )}
+  </svg>
+);
+
+const ThemeToggle = () => {
+  const { resolvedTheme, setTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
+  useEffect(() => setMounted(true), []);
 
-  const { name, showBlog, showResume } = data;
+  // Keep the slot's size before mount so the header never shifts.
+  if (!mounted || !data.darkMode) return <span className="h-11 w-11" />;
 
-  useEffect(() => {
-    setMounted(true);
-  }, []);
+  const isDark = resolvedTheme === "dark";
+  return (
+    <button
+      type="button"
+      className="icon-btn"
+      onClick={() => setTheme(isDark ? "light" : "dark")}
+      aria-label={isDark ? "Passer au thème clair" : "Passer au thème sombre"}
+    >
+      {isDark ? <MoonIcon /> : <SunIcon />}
+    </button>
+  );
+};
+
+const Header = () => {
+  const { name, showResume } = data;
+
+  const links = [
+    { href: "/#projets", label: "Projets" },
+    { href: "/#a-propos", label: "À propos" },
+    ...(showResume ? [{ href: "/resume", label: "CV", next: true }] : []),
+    { href: "/#contact", label: "Contact" },
+  ];
+
+  const renderLink = (link, className, onClick) =>
+    link.next ? (
+      <Link href={link.href}>
+        <a className={className} onClick={onClick}>
+          {link.label}
+        </a>
+      </Link>
+    ) : (
+      <a href={link.href} className={className} onClick={onClick}>
+        {link.label}
+      </a>
+    );
 
   return (
-    <>
-      <Popover className="block tablet:hidden mt-5">
-        {({ open }) => (
-          <>
-            <div className="flex items-center justify-between p-2 laptop:p-0">
-              <h1
-                onClick={() => router.push("/")}
-                className="font-medium p-2 laptop:p-0 link"
-              >
-                {name}.
-              </h1>
-
-              <div className="flex items-center">
-                {data.darkMode && (
-                  <Button
-                    onClick={() =>
-                      setTheme(theme === "dark" ? "light" : "dark")
-                    }
-                  >
-                    <img
-                      className="h-6"
-                      src={`/images/${
-                        theme === "dark" ? "moon.svg" : "sun.svg"
-                      }`}
-                    ></img>
-                  </Button>
-                )}
-
-                <Popover.Button>
-                  <img
-                    className="h-5"
-                    src={`/images/${
-                      !open
-                        ? theme === "dark"
-                          ? "menu-white.svg"
-                          : "menu.svg"
-                        : theme === "light"
-                        ? "cancel.svg"
-                        : "cancel-white.svg"
-                    }`}
-                  ></img>
-                </Popover.Button>
-              </div>
-            </div>
-            <Popover.Panel
-              className={`absolute right-0 z-10 w-11/12 p-4 ${
-                theme === "dark" ? "bg-slate-800" : "bg-white"
-              } shadow-md rounded-md`}
-            >
-              {!isBlog ? (
-                <div className="grid grid-cols-1">
-                  <Button onClick={handleWorkScroll}>Projet</Button>
-                  <Button onClick={handleAboutScroll}>A propos</Button>
-                  {showResume && (
-                    <Button
-                      onClick={() =>
-                        window.open("mailto:hello@chetanverma.com")
-                      }
-                    >
-                      C.V
-                    </Button>
-                  )}
-
-                  <Button
-                    onClick={handleAboutScroll}
-                  >
-                    Contact
-                  </Button>
-                </div>
-              ) : (
-                <div className="grid grid-cols-1">
-                  <Button onClick={() => router.push("/")} classes="first:ml-1">
-                    Home
-                  </Button>
-                  {showBlog && (
-                    <Button onClick={() => router.push("/blog")}>Blog</Button>
-                  )}
-                  {showResume && (
-                    <Button
-                      onClick={() => router.push("/resume")}
-                      classes="first:ml-1"
-                    >
-                      C.V
-                    </Button>
-                  )}
-
-                  <Button
-                    onClick={handleAboutScroll}
-                  >
-                    Contact
-                  </Button>
-                </div>
-              )}
-            </Popover.Panel>
-          </>
-        )}
-      </Popover>
-      <div
-        className={`mt-10 hidden flex-row items-center justify-between sticky ${
-          theme === "light" && "bg-white"
-        } dark:text-white top-0 z-10 tablet:flex`}
+    <header className="sticky top-0 z-20 -mx-4 bg-white/85 px-4 backdrop-blur dark:bg-black/85 tablet:-mx-6 tablet:px-6 laptop:-mx-8 laptop:px-8">
+      <nav
+        aria-label="Navigation principale"
+        className="flex h-16 items-center justify-between gap-4"
       >
-        <h1
-          onClick={() => router.push("/")}
-          className="font-medium cursor-pointer mob:p-2 laptop:p-0"
-        >
-          {name}.
-        </h1>
-        {!isBlog ? (
-          <div className="flex">
-            <Button onClick={handleWorkScroll}>Projet</Button>
-            <Button onClick={handleAboutScroll}>About</Button>
-            {showBlog && (
-              <Button onClick={() => router.push("/blog")}>Blog</Button>
-            )}
-            {showResume && (
-              <Button
-                onClick={() => router.push("/resume")}
-                classes="first:ml-1"
-              >
-                Resume
-              </Button>
-            )}
+        <Link href="/">
+          <a className="rounded-sm text-lg font-medium">{name}.</a>
+        </Link>
 
-            <Button onClick={handleAboutScroll}>
-              Contact
-            </Button>
-            {mounted && theme && data.darkMode && (
-              <Button
-                onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-              >
-                <img
-                  className="h-6"
-                  src={`/images/${theme === "dark" ? "moon.svg" : "sun.svg"}`}
-                ></img>
-              </Button>
-            )}
-          </div>
-        ) : (
-          <div className="flex">
-            <Button onClick={() => router.push("/")}>Home</Button>
-            {showBlog && (
-              <Button onClick={() => router.push("/blog")}>Blog</Button>
-            )}
-            {showResume && (
-              <Button
-                onClick={() => router.push("/resume")}
-                classes="first:ml-1"
-              >
-                Resume
-              </Button>
-            )}
+        <div className="flex items-center gap-1">
+          <ul className="hidden items-center gap-1 tablet:flex">
+            {links.map((link) => (
+              <li key={link.href}>
+                {renderLink(
+                  link,
+                  "inline-flex min-h-[2.75rem] items-center rounded-full px-4 text-base transition-colors duration-150 ease-out hover:bg-slate-100 dark:hover:bg-slate-900"
+                )}
+              </li>
+            ))}
+          </ul>
 
-            <Button onClick={handleAboutScroll}>
-              Contact
-            </Button>
+          <ThemeToggle />
 
-            {mounted && theme && data.darkMode && (
-              <Button
-                onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-              >
-                <img
-                  className="h-6"
-                  src={`/images/${theme === "dark" ? "moon.svg" : "sun.svg"}`}
-                ></img>
-              </Button>
+          <Popover className="relative tablet:hidden">
+            {({ open, close }) => (
+              <>
+                <Popover.Button
+                  className="icon-btn"
+                  aria-label={open ? "Fermer le menu" : "Ouvrir le menu"}
+                >
+                  <MenuIcon open={open} />
+                </Popover.Button>
+                <Popover.Panel className="absolute right-0 top-full z-30 mt-2 w-56 rounded-2xl border border-slate-200 bg-white p-2 shadow-lg dark:border-slate-800 dark:bg-slate-900">
+                  <ul>
+                    {links.map((link) => (
+                      <li key={link.href}>
+                        {renderLink(
+                          link,
+                          "flex min-h-[2.75rem] items-center rounded-xl px-4 text-base hover:bg-slate-100 dark:hover:bg-slate-800",
+                          () => close()
+                        )}
+                      </li>
+                    ))}
+                  </ul>
+                </Popover.Panel>
+              </>
             )}
-          </div>
-        )}
-      </div>
-    </>
+          </Popover>
+        </div>
+      </nav>
+    </header>
   );
 };
 

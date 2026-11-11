@@ -1,17 +1,24 @@
 import React from "react";
-import Button from "../Button";
-
 import yourData from "../../data/portfolioAndo.json";
 
-const Socials = ({ className }) => {
+const Socials = ({ className = "" }) => {
   return (
-    <div className={`${className} flex flex-wrap mob:flex-nowrap link`}>
-      {yourData.socials.map((social, index) => (
-        <Button key={index} onClick={() => window.open(social.link)}>
-          {social.title}
-        </Button>
-      ))}
-    </div>
+    <ul className={`flex flex-wrap gap-x-6 gap-y-2 ${className}`}>
+      {yourData.socials.map((social) => {
+        const isMail = social.link.startsWith("mailto:");
+        return (
+          <li key={social.id}>
+            <a
+              href={social.link}
+              className="text-link inline-block py-1 text-base"
+              {...(isMail ? {} : { target: "_blank", rel: "noopener noreferrer" })}
+            >
+              {social.title}
+            </a>
+          </li>
+        );
+      })}
+    </ul>
   );
 };
 

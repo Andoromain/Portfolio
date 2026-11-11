@@ -1,9 +1,9 @@
 {
     "name": "Ando Romain",
     "headerTaglineOne": "Bonjour 👋",
-    "headerTaglineTwo": "Je suis Ando Romain RAZAFINANDRASANA",
-    "headerTaglineThree": "Developpeur web",
-    "headerTaglineFour": "",
+    "headerTaglineTwo": "Je suis Ando Romain RAZAFINANDRASANA,",
+    "headerTaglineThree": "développeur Full Stack.",
+    "headerTaglineFour": "Je conçois des applications web et mobiles de bout en bout, du back-end Laravel aux interfaces Vue.js et React.",
     "showBlog": false,
     "darkMode": true,
     "socials": [
@@ -19,7 +19,7 @@
         },
         {
             "id": "3",
-            "title": "Email",
+            "title": "E-mail",
             "link": "mailto:andoajpr@gmail.com"
         },
         {
@@ -31,87 +31,182 @@
     "projects": [
         {
             "id": "1",
-            "title": "Project IHM",
-            "description": "Web Design",
-            "imageSrc": "https://s3-alpha.figma.com/hub/file/3374196297/c0221c7c-0b56-476d-ae95-fd77d40ed04e-cover.png",
-            "url": "https://www.figma.com/community/file/1231024699160927123"
+            "title": "AMIH Caisse",
+            "description": "Gestion de caisse des micro-projets de l’AMIH : déblocages de fonds, caisses, journal, personnel et tableau de bord. Rôles et permissions, journal d’audit, sauvegardes chiffrées, exports Excel et PDF.",
+            "tags": [
+                "Laravel 13",
+                "Inertia",
+                "React 19",
+                "TypeScript",
+                "MUI",
+                "PWA / Android"
+            ],
+            "imageSrc": "/images/projects/amih-caisse.webp",
+            "imageAlt": "Tableau de bord d’AMIH Caisse : montants nets, débloqués et soldes par micro-projet",
+            "url": "",
+            "status": "Projet client"
         },
         {
             "id": "2",
-            "title": "Projet Gestion Bancaire",
-            "description": "Development web avec Django",
-            "imageSrc": "https://gestionuserandoromain.000webhostapp.com/public/gestionbanc.png",
-            "url": "https://andoajpr.pythonanywhere.com/"
+            "title": "TO Port",
+            "description": "Portage Android non officiel d’un jeu PC Windows de 2005, projet de fan. Le jeu tourne sur ARM64 grâce à Wine et Box64, et son rendu DirectX 9 est traduit en Vulkan. 60 FPS sur Snapdragon 8 Gen 1.",
+            "tags": [
+                "Android",
+                "Java / NDK",
+                "Wine",
+                "Box64",
+                "DXVK / Vulkan",
+                "GitLab CI"
+            ],
+            "imageSrc": "/images/projects/to-port.svg",
+            "imageAlt": "",
+            "url": "",
+            "status": "Projet personnel"
         },
         {
             "id": "3",
-            "title": "Project Gestion Archives et courriers",
-            "description": "Development web avec Laravel",
-            "imageSrc": "https://gestionuserandoromain.000webhostapp.com/public/gestionarchiv.png",
-            "url": "http://gestion-archives-et-courriers-gitww-andoajpr-dev.apps.sandbox-m2.ll9k.p1.openshiftapps.com/public/"
+            "title": "Family Dépense",
+            "description": "Application PWA de budget familial qui fonctionne hors ligne : transactions, budgets, objectifs d’épargne, rapports, import bancaire CSV, sauvegarde Google Drive et verrouillage par code PIN.",
+            "tags": [
+                "React",
+                "TypeScript",
+                "Vite",
+                "Dexie",
+                "Supabase",
+                "Recharts"
+            ],
+            "imageSrc": "/images/projects/family-depense.webp",
+            "imageAlt": "Tableau de bord de Family Dépense : solde actuel, entrées et dépenses du mois, évolution sur 6 mois",
+            "url": "",
+            "status": "Projet personnel"
         },
         {
             "id": "4",
-            "title": "Project Gestion des utilisateurs ",
-            "description": "Development web avec React et Laravel",
-            "imageSrc": "https://gestionuserandoromain.000webhostapp.com/public/gestionuser.png",
-            "url": "https://gestion-utilisateur.netlify.app/"
+            "title": "Plateforme SDA",
+            "description": "Modules métier développés chez Trilogy Consulting pour DFC Mada : client, ticket, social, administratif et juridique. Connexion Microsoft, notifications en temps réel et chatbot.",
+            "tags": [
+                "Laravel",
+                "Vue 3",
+                "Inertia",
+                "Vuetify",
+                "Pusher",
+                "SSO Microsoft"
+            ],
+            "imageSrc": "/images/projects/plateforme-sda.svg",
+            "imageAlt": "",
+            "url": "",
+            "status": "Trilogy Consulting"
         },
-           {
+        {
             "id": "5",
-            "title": "Project Gestion de materiels informatique et vente de materiel ",
-            "description": "Development web avec Python/Django",
-            "imageSrc": "https://gestionuserandoromain.000webhostapp.com/public/ventemat.png",
-            "url": "https://andoromain.pythonanywhere.com/"
+            "title": "Katro",
+            "description": "Le jeu de semailles des hauts plateaux malgaches, jouable contre une IA réglable en trois niveaux (minimax avec élagage alpha-bêta).",
+            "tags": [
+                "React",
+                "TypeScript",
+                "Vite",
+                "IA minimax"
+            ],
+            "imageSrc": "/images/projects/katro.webp",
+            "imageAlt": "Partie de Katro en cours : plateau de 32 trous et panneau de l’IA",
+            "url": "https://github.com/andoajpr2/JEUX-KATRO",
+            "status": "Open source"
+        },
+        {
+            "id": "6",
+            "title": "Fanorona",
+            "description": "Le jeu de stratégie national de Madagascar, avec ses règles de capture par approche et par retrait, et sa variante Fanoron-telo.",
+            "tags": [
+                "React",
+                "TypeScript",
+                "Vite"
+            ],
+            "imageSrc": "/images/projects/fanorona.webp",
+            "imageAlt": "Plateau de Fanorona Tsivy avec les pions noirs et blancs en position de départ",
+            "url": "https://github.com/andoajpr2/JEUX-FANORONA",
+            "status": "Open source"
         }
     ],
-    "services": [
-   
-    ],
-    "aboutpara": "Je suis actuellement en deuxième année en Master professionnel à l'Ecole Nationale d'Informatique, Je recherche un stage de fin d'etude",
+    "services": [],
+    "aboutpara": "Développeur Full Stack chez Trilogy Consulting depuis juin 2023 et diplômé d'un master en informatique de l'École Nationale d'Informatique (ENI) de Fianarantsoa. Je conçois des applications web et mobiles de bout en bout, du back-end Laravel aux interfaces Vue.js et React, jusqu'au déploiement et à l'intégration continue.",
     "resume": {
-        "tagline": "👋  I'm a software engineer, product designer, and maker.",
-        "description": "I have delivered world-class user experiences to millions of people. Well-versed with React, Javascript, and most of the Web frameworks.",
+        "tagline": "👋 Développeur Full Stack, diplômé de l'École Nationale d'Informatique",
+        "description": "Je crée des applications web et mobiles complètes, avec rigueur et créativité : back-end Laravel, interfaces Vue.js et React, applications PWA et Android, déploiement automatisé.",
         "experiences": [
             {
                 "id": "1",
-                "dates": "March 2022 - Present",
-                "type": "Full Time",
-                "position": "Frontend Engineer at X",
+                "dates": "Juin 2023 - Aujourd'hui",
+                "type": "Antananarivo, Madagascar",
+                "position": "Développeur Full Stack chez Trilogy Consulting",
                 "bullets": [
-                    "Worked on the frontend of a React application",
-                    "Worked on the frontend of a React application"
-                ]
-            },
-            {
-                "id": "2",
-                "dates": "March 2020 - March 2022",
-                "type": "Full Time",
-                "position": "Frontend Engineer at X",
-                "bullets": [
-                    "Worked on the frontend of a React application"
+                    "Développement de la plateforme SDA pour DFC Mada : modules client, ticket, social, administratif et juridique",
+                    "Back-end Laravel (Jetstream, Sanctum, rôles et permissions) et interfaces Vue 3, Inertia et Vuetify",
+                    "Connexion Microsoft (SSO), notifications en temps réel avec Pusher, e-mails transactionnels avec Brevo",
+                    "Déploiement et configuration des serveurs avec Ansible"
                 ]
             }
         ],
         "education": {
-            "universityName": "University X",
-            "universityDate": "2016-2020",
-            "universityPara": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry&apos;s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book"
+            "universityName": "École Nationale d'Informatique (ENI) Fianarantsoa",
+            "universityDate": "2018 - 2023",
+            "universityPara": "Master en informatique (2021 - 2023) et licence professionnelle en informatique (2018 - 2020)."
         },
         "languages": [
-            "Javascript",
+            "PHP",
+            "JavaScript",
+            "TypeScript",
+            "Python",
+            "Java",
             "HTML5",
-            "CSS",
-            "Python"
+            "CSS"
         ],
         "frameworks": [
+            "Laravel",
+            "Vue.js",
+            "Vuetify",
+            "Inertia.js",
             "React",
-            "Typescript",
-            "NodeJs"
+            "Next.js",
+            "FastAPI",
+            "Django"
         ],
         "others": [
-            "Figma",
-            "AWS"
+            "Git / GitHub / GitLab CI",
+            "Ansible",
+            "Docker",
+            "Android",
+            "PWA",
+            "Figma"
         ]
-    }
+    },
+    "showResume": true,
+    "phone": "+261 34 79 237 18",
+    "email": "andoajpr@gmail.com",
+    "otherProjects": [
+        {
+            "title": "Projet IHM",
+            "description": "Maquette d’interface sur Figma",
+            "url": "https://www.figma.com/community/file/1231024699160927123"
+        },
+        {
+            "title": "Gestion bancaire",
+            "description": "Application web en Django",
+            "url": "https://andoajpr.pythonanywhere.com/"
+        },
+        {
+            "title": "Gestion des archives et du courrier",
+            "description": "Application web en Laravel",
+            "url": "https://github.com/Andoromain/Gestion-Archives-et-courriers"
+        },
+        {
+            "title": "Gestion des utilisateurs",
+            "description": "React et Laravel",
+            "url": "https://gestion-utilisateur.netlify.app/"
+        },
+        {
+            "title": "Matériel informatique et vente",
+            "description": "Application web en Python et Django",
+            "url": "https://andoromain.pythonanywhere.com/"
+        }
+    ]
 }

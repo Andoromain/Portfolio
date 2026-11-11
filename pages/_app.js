@@ -7,7 +7,7 @@ const App = ({ Component, pageProps }) => {
     <>
       <Script src="//web.webpushs.com/js/push/edfda228f62ea629c72b26849bc50dde_1.js" strategy="beforeInteractive" />
     <link rel="manifest" href="manifest.json" />
-      <ThemeProvider>
+      <ThemeProvider attribute="class" defaultTheme="system" disableTransitionOnChange>
         <Component {...pageProps} />
       </ThemeProvider>
     </>

@@ -1,35 +1,42 @@
 import React from "react";
 import Socials from "../Socials";
-import Link from "next/link";
 import Button from "../Button";
+import data from "../../data/portfolioAndo.json";
 
-const Footer = ({}) => {
+const Footer = () => {
+  const phoneHref = `tel:${data.phone.replace(/\s/g, "")}`;
+
   return (
-    <>
-      <div className="mt-5 laptop:mt-40 p-2 laptop:p-0">
-        <div>
-          <h1 className="text-2xl text-bold">Contact.</h1>
-          <div className="mt-10">
-            <h1 className="text-3xl tablet:text-6xl laptop:text-6xl laptopl:text-8xl text-bold">
-              LET&apos;S WORK
-            </h1>
-            <h1 className="text-3xl tablet:text-6xl laptop:text-6xl laptopl:text-8xl text-bold">
-              TOGETHER
-            </h1>
-            <Button type="primary">+261 34 79 237 18</Button>
-            <div className="mt-10">
-              <Socials />
-            </div>
-          </div>
+    <footer className="mt-24 laptop:mt-40">
+      <section id="contact" aria-labelledby="contact-titre">
+        <h2
+          id="contact-titre"
+          className="text-sm font-medium uppercase tracking-[0.05em] text-slate-500 dark:text-slate-400"
+        >
+          Contact
+        </h2>
+        <p className="mt-4 text-4xl font-medium leading-[1.1] tracking-[-0.02em] tablet:text-6xl laptopl:text-7xl">
+          Travaillons ensemble.
+        </p>
+        <p className="muted mt-6 max-w-xl text-lg leading-relaxed">
+          Un projet web ou mobile, une mission ou une simple question ?
+          Écrivez-moi ou appelez-moi.
+        </p>
+        <div className="mt-8 flex flex-wrap gap-3">
+          <Button type="primary" href={`mailto:${data.email}`}>
+            Écrire un e-mail
+          </Button>
+          <Button type="outline" href={phoneHref}>
+            {data.phone}
+          </Button>
         </div>
-      </div>
-      {/* <h1 className="text-sm text-bold mt-2 laptop:mt-10 p-2 laptop:p-0">
-        Made With ❤ by{" "}
-        <Link href="http://www.chetanverma.com">
-          <a className="underline underline-offset-1">Chetan Verma</a>
-        </Link>
-      </h1> */}
-    </>
+        <Socials className="mt-8" />
+      </section>
+
+      <p className="mt-16 border-t border-slate-200 py-8 text-sm text-slate-500 dark:border-slate-800 dark:text-slate-400">
+        © {new Date().getFullYear()} {data.name} RAZAFINANDRASANA
+      </p>
+    </footer>
   );
 };
 

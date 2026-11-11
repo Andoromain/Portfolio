@@ -6,21 +6,26 @@ const ProjectResume = ({ dates, type, position, bullets }) => {
     : (bullets || "").split(",").filter((bullet) => bullet.trim());
 
   return (
-    <div className="mt-6 grid gap-2 tablet:grid-cols-[minmax(0,1fr)_minmax(0,2fr)] tablet:gap-8">
-      <div>
-        <p className="text-base tabular-nums">{dates}</p>
-        <p className="text-sm text-slate-500 dark:text-slate-400">{type}</p>
-      </div>
-      <div>
-        <h3 className="text-lg font-medium leading-snug">{position}</h3>
-        {bulletsLocal.length > 0 && (
-          <ul className="muted mt-2 list-disc space-y-1.5 pl-5 text-base leading-relaxed">
-            {bulletsLocal.map((bullet, index) => (
-              <li key={index}>{bullet}</li>
-            ))}
-          </ul>
-        )}
-      </div>
+    <div>
+      <p className="label muted">
+        {dates} · {type}
+      </p>
+      <h3 className="mt-2 text-2xl font-semibold leading-snug">{position}</h3>
+      {bulletsLocal.length > 0 && (
+        <ul className="mt-4 border-t border-fg/20">
+          {bulletsLocal.map((bullet, index) => (
+            <li
+              key={index}
+              className="grid grid-cols-[2.5rem_minmax(0,1fr)] gap-2 border-b border-fg/20 py-3 text-lg leading-relaxed"
+            >
+              <span aria-hidden="true" className="label muted pt-1">
+                {String(index + 1).padStart(2, "0")}
+              </span>
+              <span>{bullet}</span>
+            </li>
+          ))}
+        </ul>
+      )}
     </div>
   );
 };

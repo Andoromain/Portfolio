@@ -1,3 +1,5 @@
+const token = (name) => `rgb(var(--c-${name}) / <alpha-value>)`;
+
 module.exports = {
   content: [
     "./pages/**/*.{js,ts,jsx,tsx}",
@@ -22,12 +24,21 @@ module.exports = {
       padding: {
         DEFAULT: "1rem",
         tablet: "1.5rem",
-        laptop: "2rem",
+        laptop: "2.5rem",
       },
     },
     extend: {
+      // Semantic tokens; values live in styles/globals.css for each theme.
+      colors: {
+        bg: token("bg"),
+        fg: token("fg"),
+        muted: token("muted"),
+        accent: token("accent"),
+        "on-accent": token("on-accent"),
+      },
       fontFamily: {
-        sans: ["Hind", "ui-sans-serif", "system-ui", "sans-serif"],
+        sans: ["Archivo", "ui-sans-serif", "system-ui", "sans-serif"],
+        mono: ["JetBrains Mono", "ui-monospace", "SFMono-Regular", "monospace"],
       },
     },
   },

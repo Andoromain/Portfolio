@@ -7,18 +7,21 @@ import WorkCard from "../components/WorkCard";
 import Footer from "../components/Footer";
 import Button from "../components/Button";
 import Cursor from "../components/Cursor";
+import Marquee from "../components/Marquee";
+import SectionHeading from "../components/SectionHeading";
 import { useIsomorphicLayoutEffect } from "../utils";
 import { stagger } from "../animations";
 
 // Local Data
 import data from "../data/portfolioAndo.json";
 
+const pad = (n) => String(n).padStart(2, "0");
+
 export default function Home() {
-  const textOne = useRef();
-  const textTwo = useRef();
-  const textThree = useRef();
-  const textFour = useRef();
-  const actions = useRef();
+  const lineOne = useRef();
+  const lineTwo = useRef();
+  const role = useRef();
+  const intro = useRef();
 
   useEffect(() => {
     // Your JavaScript code
@@ -54,118 +57,135 @@ export default function Home() {
   }, []); 
   
   useIsomorphicLayoutEffect(() => {
-    stagger([
-      textOne.current,
-      textTwo.current,
-      textThree.current,
-      textFour.current,
-      actions.current,
-    ]);
+    stagger([lineOne.current, lineTwo.current, role.current, intro.current]);
   }, []);
 
-  const sectionLabel =
-    "text-sm font-medium uppercase tracking-[0.05em] text-slate-500 dark:text-slate-400";
+  const [featured, ...projects] = data.projects;
+  const year = new Date().getFullYear();
 
   return (
-    <div className={`relative ${data.showCursor ? "cursor-none" : ""}`}>
+    <div id="haut" className={data.showCursor ? "cursor-none" : ""}>
       {data.showCursor && <Cursor />}
       <Head>
         <title>{`${data.name} RAZAFINANDRASANA · Développeur Full Stack`}</title>
-        <meta name="description" content={data.headerTaglineFour} />
+        <meta name="description" content={data.intro} />
       </Head>
-      <div className="gradient-circle" aria-hidden="true"></div>
-      <div className="gradient-circle-bottom" aria-hidden="true"></div>
 
       <div className="container">
         <Header />
 
         <main>
-          <section aria-labelledby="hero-titre" className="pt-12 laptop:pt-24">
+          {/* 01 — Hero */}
+          <section aria-labelledby="hero-titre" className="pb-12 pt-6 laptop:pb-16">
+            <div className="label muted flex items-baseline justify-between gap-4">
+              <span aria-hidden="true">01 — Portfolio</span>
+              <span className="hidden tablet:inline">Antananarivo, Madagascar</span>
+              <span>{year}</span>
+            </div>
+
             <h1
               id="hero-titre"
-              className="max-w-5xl break-words text-[1.75rem] font-medium mob:text-[2rem] leading-[1.1] tracking-[-0.02em] tablet:text-6xl laptopl:text-7xl"
+              className="display mt-6 text-[clamp(2.75rem,15.5vw,16rem)] leading-[0.82] tracking-[-0.035em]"
             >
-              <span ref={textOne} className="block">
-                {data.headerTaglineOne}
+              <span ref={lineOne} className="block">
+                Ando
               </span>
-              <span ref={textTwo} className="block">
-                {data.headerTaglineTwo}
+              <span ref={lineTwo} className="block">
+                Romain
+                <span className="highlight ml-[0.04em] text-[0.6em] align-baseline">
+                  .
+                </span>
               </span>
-              <span
-                ref={textThree}
-                className="block text-slate-500 dark:text-slate-400"
-              >
-                {data.headerTaglineThree}
-              </span>
+              <span className="sr-only"> RAZAFINANDRASANA</span>
             </h1>
-            <p
-              ref={textFour}
-              className="muted mt-6 max-w-2xl text-lg leading-relaxed laptop:text-xl"
+
+            <div
+              ref={role}
+              className="mt-6 flex flex-wrap items-center gap-x-6 gap-y-3"
             >
-              {data.headerTaglineFour}
-            </p>
-            <div ref={actions} className="mt-8">
-              <div className="flex flex-wrap gap-3">
-                <Button type="primary" href="#projets">
-                  Voir mes projets
-                </Button>
-                {data.showResume && (
-                  <Link href="/resume">
-                    <a className="btn btn-outline">Consulter mon CV</a>
-                  </Link>
-                )}
+              <p className="display highlight text-2xl tablet:text-4xl">
+                Développeur Full Stack
+              </p>
+              <p className="label muted" aria-hidden="true">
+                Razafinandrasana
+              </p>
+            </div>
+
+            <div
+              ref={intro}
+              className="mt-12 grid grid-cols-1 gap-8 border-t border-fg/20 pt-8 laptop:grid-cols-12 laptop:gap-10"
+            >
+              <p className="text-xl leading-[1.45] laptop:col-span-7 laptop:text-2xl">
+                {data.intro}
+              </p>
+              <div className="flex flex-col items-start gap-6 laptop:col-span-5 laptop:items-end">
+                <div className="flex flex-wrap gap-3 laptop:justify-end">
+                  <Button type="primary" href="#projets">
+                    Voir mes projets <span aria-hidden="true">↓</span>
+                  </Button>
+                  {data.showResume && (
+                    <Link href="/resume">
+                      <a className="btn btn-outline">Mon CV</a>
+                    </Link>
+                  )}
+                </div>
+                <Socials className="laptop:justify-end" />
               </div>
-              <Socials className="mt-6" />
             </div>
           </section>
 
+          <Marquee items={data.stack} label="Technologies que j’utilise" />
+
+          {/* 02 — Projets */}
           <section
             id="projets"
             aria-labelledby="projets-titre"
-            className="mt-24 laptop:mt-32"
+            className="mt-20 laptop:mt-28"
           >
-            <h2 id="projets-titre" className={sectionLabel}>
-              Projets
-            </h2>
-            <p className="mt-4 max-w-2xl text-3xl font-medium leading-tight tracking-[-0.01em] laptop:text-4xl">
-              Une sélection de ce que j’ai construit, du projet client au jeu
-              open source.
-            </p>
+            <SectionHeading
+              id="projets-titre"
+              number="02"
+              title="Projets"
+              aside={`${data.projects.length} sélectionnés`}
+            />
 
-            <ul className="mt-12 grid grid-cols-1 gap-x-8 gap-y-16 tablet:grid-cols-2">
-              {data.projects.map((project) => (
+            <div className="mt-10 laptop:mt-14">
+              <WorkCard project={featured} number="01" featured />
+            </div>
+
+            <ul className="mt-16 grid grid-cols-1 gap-x-10 gap-y-16 tablet:grid-cols-2 laptop:mt-20">
+              {projects.map((project, index) => (
                 <li key={project.id}>
-                  <WorkCard project={project} />
+                  <WorkCard project={project} number={pad(index + 2)} />
                 </li>
               ))}
             </ul>
 
             {data.otherProjects && data.otherProjects.length > 0 && (
               <div className="mt-20">
-                <h3 className="text-xl font-medium">Projets plus anciens</h3>
-                <ul className="mt-4 border-t border-slate-200 dark:border-slate-800">
-                  {data.otherProjects.map((project) => (
-                    <li
-                      key={project.title}
-                      className="border-b border-slate-200 dark:border-slate-800"
-                    >
+                <h3 className="label muted">Archives</h3>
+                <ul className="mt-4 border-t-2 border-fg">
+                  {data.otherProjects.map((project, index) => (
+                    <li key={project.title} className="border-b border-fg/20">
                       <a
                         href={project.url}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="flex flex-wrap items-baseline justify-between gap-x-6 gap-y-1 py-4 transition-colors duration-150 ease-out hover:text-slate-600 dark:hover:text-slate-300"
+                        className="group grid grid-cols-[2.5rem_minmax(0,1fr)_auto] items-baseline gap-x-4 gap-y-1 py-4 transition-colors duration-150 ease-out hover:bg-accent hover:text-on-accent tablet:grid-cols-[3rem_minmax(0,1fr)_minmax(0,1fr)_auto]"
                       >
-                        <span className="text-lg font-medium">
-                          {project.title}
-                          <span aria-hidden="true"> ↗</span>
-                          <span className="sr-only">
-                            {" "}
-                            (s’ouvre dans un nouvel onglet)
-                          </span>
+                        <span aria-hidden="true" className="label muted group-hover:text-current">
+                          {pad(data.projects.length + index + 1)}
                         </span>
-                        <span className="muted text-base">
+                        <span className="text-lg font-semibold">
+                          {project.title}
+                        </span>
+                        <span className="muted col-start-2 text-base group-hover:text-current tablet:col-start-auto">
                           {project.description}
                         </span>
+                        <span aria-hidden="true" className="col-start-3 row-start-1 tablet:col-start-auto tablet:row-start-auto">
+                          ↗
+                        </span>
+                        <span className="sr-only"> (s’ouvre dans un nouvel onglet)</span>
                       </a>
                     </li>
                   ))}
@@ -174,17 +194,39 @@ export default function Home() {
             )}
           </section>
 
+          {/* 03 — À propos */}
           <section
             id="a-propos"
             aria-labelledby="a-propos-titre"
-            className="mt-24 laptop:mt-40"
+            className="mt-24 laptop:mt-36"
           >
-            <h2 id="a-propos-titre" className={sectionLabel}>
-              À propos
-            </h2>
-            <p className="mt-4 max-w-3xl text-2xl leading-[1.4] laptop:text-3xl">
-              {data.aboutpara}
-            </p>
+            <SectionHeading id="a-propos-titre" number="03" title="À propos" />
+            <div className="mt-10 grid grid-cols-1 gap-12 laptop:grid-cols-12 laptop:gap-10">
+              <div className="laptop:col-span-7">
+                <p className="text-3xl font-semibold leading-[1.2] tracking-[-0.01em] tablet:text-4xl laptop:text-5xl">
+                  {data.aboutStatement}
+                </p>
+                <p className="muted mt-6 max-w-2xl text-lg leading-relaxed">
+                  {data.aboutpara}
+                </p>
+              </div>
+              <dl className="laptop:col-span-5">
+                {data.facts.map((fact) => (
+                  <div
+                    key={fact.label}
+                    className="grid grid-cols-[7rem_minmax(0,1fr)] gap-4 border-t border-fg/20 py-5 last:border-b"
+                  >
+                    <dt className="label muted pt-1">{fact.label}</dt>
+                    <dd>
+                      <p className="text-lg font-semibold leading-snug">
+                        {fact.value}
+                      </p>
+                      <p className="label muted mt-1">{fact.detail}</p>
+                    </dd>
+                  </div>
+                ))}
+              </dl>
+            </div>
           </section>
         </main>
 

@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Hind:wght@400;500;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&family=JetBrains+Mono:wght@400;500&display=swap");
 
 @tailwind base;
 @tailwind components;
@@ -7,9 +7,28 @@
 @import "./markdown.css";
 
 @layer base {
+  /* Semantic color tokens, as "r g b" so Tailwind can apply opacity. */
+  :root {
+    --c-bg: 244 243 238; /* papier */
+    --c-fg: 12 12 12; /* encre */
+    --c-muted: 82 82 78;
+    --c-accent: 200 255 46; /* vert citron */
+    --c-on-accent: 12 12 12;
+    color-scheme: light;
+  }
+
+  .dark {
+    --c-bg: 12 12 12;
+    --c-fg: 244 243 238;
+    --c-muted: 163 163 155;
+    --c-accent: 200 255 46;
+    --c-on-accent: 12 12 12;
+    color-scheme: dark;
+  }
+
   html {
     /* Anchored sections land below the sticky header. */
-    scroll-padding-top: 5rem;
+    scroll-padding-top: 4.5rem;
   }
 
   @media (prefers-reduced-motion: no-preference) {
@@ -19,7 +38,11 @@
   }
 
   body {
-    @apply bg-white font-sans text-slate-900 antialiased dark:bg-black dark:text-slate-100;
+    @apply bg-bg font-sans text-fg antialiased;
+  }
+
+  ::selection {
+    @apply bg-accent text-on-accent;
   }
 
   h1,
@@ -39,8 +62,30 @@
 }
 
 @layer components {
+  /* Display type: Archivo pushed to its widest, heaviest cut. */
+  .display {
+    font-weight: 800;
+    font-stretch: 125%;
+    text-transform: uppercase;
+    letter-spacing: -0.02em;
+  }
+
+  /* Small mono labels: section numbers, metadata, tags. */
+  .label {
+    @apply font-mono text-sm uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  /* Highlighter band behind a phrase. */
+  .highlight {
+    @apply bg-accent px-[0.15em] text-on-accent;
+    box-decoration-break: clone;
+    -webkit-box-decoration-break: clone;
+  }
+
   .btn {
-    @apply inline-flex min-h-[2.75rem] items-center justify-center gap-2 rounded-full border border-transparent px-5 text-base font-medium leading-none;
+    @apply inline-flex min-h-[3rem] items-center justify-center gap-3 border-2 border-fg px-6 font-mono text-sm font-medium uppercase leading-none;
+    letter-spacing: 0.05em;
     transition-property: background-color, border-color, color, scale;
     transition-duration: 150ms;
     transition-timing-function: ease-out;
@@ -54,53 +99,58 @@
   }
 
   .btn-primary {
-    @apply bg-slate-900 text-white hover:bg-slate-700 dark:bg-white dark:text-slate-900 dark:hover:bg-slate-200;
+    @apply bg-fg text-bg hover:border-accent hover:bg-accent hover:text-on-accent;
   }
 
-  .btn-outline {
-    @apply border-slate-300 hover:bg-slate-100 dark:border-slate-700 dark:hover:bg-slate-900;
-  }
-
+  .btn-outline,
   .btn-ghost {
-    @apply hover:bg-slate-100 dark:hover:bg-slate-900;
+    @apply bg-transparent hover:bg-fg hover:text-bg;
   }
 
   .icon-btn {
-    @apply inline-flex h-11 w-11 items-center justify-center rounded-full transition-colors duration-150 ease-out hover:bg-slate-100 dark:hover:bg-slate-900;
+    @apply inline-flex h-11 w-11 items-center justify-center transition-colors duration-150 ease-out hover:bg-fg hover:text-bg;
     -webkit-tap-highlight-color: transparent;
   }
 
   .text-link {
-    @apply underline decoration-slate-300 underline-offset-4 transition-colors duration-150 ease-out hover:decoration-current dark:decoration-slate-600;
-    text-decoration-thickness: from-font;
+    @apply underline decoration-accent decoration-2 underline-offset-4 transition-colors duration-150 ease-out hover:bg-accent hover:text-on-accent;
   }
 
   .muted {
-    @apply text-slate-600 dark:text-slate-400;
+    @apply text-muted;
   }
-}
 
-.gradient-circle,
-.gradient-circle-bottom {
-  position: absolute;
-  inset-inline: 0;
-  pointer-events: none;
-  z-index: 100;
-  opacity: 0.5;
-  filter: blur(40px);
-  background: radial-gradient(
-    circle,
-    rgba(248, 107, 223, 1) 0%,
-    rgba(107, 107, 248, 0.8) 100%
-  );
-}
+  /* Stack band: scrolls only when motion is welcome. */
+  .marquee-track {
+    @apply flex w-max;
+  }
 
-.gradient-circle {
-  top: -30px;
-  height: 40px;
-}
+  @media (prefers-reduced-motion: no-preference) {
+    .marquee-track {
+      animation: marquee 40s linear infinite;
+    }
 
-.gradient-circle-bottom {
-  bottom: -20px;
-  height: 30px;
+    .marquee-paused .marquee-track {
+      animation-play-state: paused;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .marquee-track {
+      @apply w-auto flex-wrap;
+    }
+
+    .marquee-copy {
+      display: none;
+    }
+  }
+
+  @keyframes marquee {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(-50%);
+    }
+  }
 }

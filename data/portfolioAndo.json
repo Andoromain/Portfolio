@@ -44,10 +44,28 @@
             "imageSrc": "/images/projects/amih-caisse.webp",
             "imageAlt": "Tableau de bord d’AMIH Caisse : montants nets, débloqués et soldes par micro-projet",
             "url": "",
-            "status": "Projet client"
+            "status": "Projet client",
+            "featured": true
         },
         {
             "id": "2",
+            "title": "Socket Chat",
+            "description": "Messagerie instantanée pair à pair pour le réseau interne, sans serveur central : découverte automatique des collègues, historique local, envoi de fichiers, réactions, appels audio et vidéo entre PC et téléphones. Installeur Windows, paquet Linux et application Android.",
+            "tags": [
+                "Python 3.12",
+                "PySide6 / Qt 6",
+                "WebRTC",
+                "Flutter",
+                "Windows · Linux · Android"
+            ],
+            "imageSrc": "/images/projects/socket-chat.webp",
+            "imageAlt": "Socket Chat : conversation en thème sombre sur PC et conversation sur Android",
+            "url": "https://github.com/andoajpr2/socket-chat-releases",
+            "status": "Bureau et mobile",
+            "featured": true
+        },
+        {
+            "id": "3",
             "title": "TO Port",
             "description": "Portage Android non officiel d’un jeu PC Windows de 2005, projet de fan. Le jeu tourne sur ARM64 grâce à Wine et Box64, et son rendu DirectX 9 est traduit en Vulkan. 60 FPS sur Snapdragon 8 Gen 1.",
             "tags": [
@@ -64,7 +82,7 @@
             "status": "Projet personnel"
         },
         {
-            "id": "3",
+            "id": "4",
             "title": "Family Dépense",
             "description": "Application PWA de budget familial qui fonctionne hors ligne : transactions, budgets, objectifs d’épargne, rapports, import bancaire CSV, sauvegarde Google Drive et verrouillage par code PIN.",
             "tags": [
@@ -81,7 +99,7 @@
             "status": "Projet personnel"
         },
         {
-            "id": "4",
+            "id": "5",
             "title": "Plateforme SDA",
             "description": "Modules métier développés chez Trilogy Consulting pour DFC Mada : client, ticket, social, administratif et juridique. Connexion Microsoft, notifications en temps réel et chatbot.",
             "tags": [
@@ -98,7 +116,7 @@
             "status": "Trilogy Consulting"
         },
         {
-            "id": "5",
+            "id": "6",
             "title": "Katro",
             "description": "Le jeu de semailles des hauts plateaux malgaches, jouable contre une IA réglable en trois niveaux (minimax avec élagage alpha-bêta).",
             "tags": [
@@ -113,7 +131,7 @@
             "status": "Open source"
         },
         {
-            "id": "6",
+            "id": "7",
             "title": "Fanorona",
             "description": "Le jeu de stratégie national de Madagascar, avec ses règles de capture par approche et par retrait, et sa variante Fanoron-telo.",
             "tags": [
@@ -124,6 +142,22 @@
             "imageSrc": "/images/projects/fanorona.webp",
             "imageAlt": "Plateau de Fanorona Tsivy avec les pions noirs et blancs en position de départ",
             "url": "https://github.com/andoajpr2/JEUX-FANORONA",
+            "status": "Open source"
+        },
+        {
+            "id": "8",
+            "title": "SCRIPT-UTILS",
+            "description": "Scripts Bash pour automatiser le quotidien d’un développeur : création de projets Laravel, hôtes virtuels Nginx et Apache, administration système et alerte d’espace disque via un timer systemd. Installation en une commande.",
+            "tags": [
+                "Bash",
+                "Nginx",
+                "Apache",
+                "systemd",
+                "Laravel"
+            ],
+            "imageSrc": "/images/projects/script-utils.webp",
+            "imageAlt": "Visuel de SCRIPT-UTILS avec des exemples de commandes : install.sh, laravel-new, nginx-new, diskwatch",
+            "url": "https://github.com/Andoromain/SCRIPT-UTILS",
             "status": "Open source"
         }
     ],
@@ -157,6 +191,7 @@
             "TypeScript",
             "Python",
             "Java",
+            "Bash",
             "HTML5",
             "CSS"
         ],
@@ -168,11 +203,14 @@
             "React",
             "Next.js",
             "FastAPI",
-            "Django"
+            "Django",
+            "Flutter",
+            "PySide6 / Qt"
         ],
         "others": [
             "Git / GitHub / GitLab CI",
             "Ansible",
+            "Nginx / Apache",
             "Docker",
             "Android",
             "PWA",
@@ -240,6 +278,9 @@
         "FastAPI",
         "Android",
         "PWA",
+        "Flutter",
+        "PySide6",
+        "Bash",
         "Ansible",
         "Docker",
         "GitLab CI"

@@ -60,7 +60,8 @@ export default function Home() {
     stagger([lineOne.current, lineTwo.current, role.current, intro.current]);
   }, []);
 
-  const [featured, ...projects] = data.projects;
+  const featured = data.projects.filter((project) => project.featured);
+  const projects = data.projects.filter((project) => !project.featured);
   const year = new Date().getFullYear();
 
   return (
@@ -149,14 +150,18 @@ export default function Home() {
               aside={`${data.projects.length} sélectionnés`}
             />
 
-            <div className="mt-10 laptop:mt-14">
-              <WorkCard project={featured} number="01" featured />
-            </div>
+            <ul className="mt-10 space-y-16 laptop:mt-14 laptop:space-y-24">
+              {featured.map((project, index) => (
+                <li key={project.id}>
+                  <WorkCard project={project} number={pad(index + 1)} featured />
+                </li>
+              ))}
+            </ul>
 
             <ul className="mt-16 grid grid-cols-1 gap-x-10 gap-y-16 tablet:grid-cols-2 laptop:mt-20">
               {projects.map((project, index) => (
                 <li key={project.id}>
-                  <WorkCard project={project} number={pad(index + 2)} />
+                  <WorkCard project={project} number={pad(featured.length + index + 1)} />
                 </li>
               ))}
             </ul>

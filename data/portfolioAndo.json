@@ -109,7 +109,7 @@
                 "Synthèse vocale"
             ],
             "imageSrc": "/images/projects/prolang.webp",
-            "imageAlt": "Visuel de ProLang : flashcards SM-2, quiz et textes à trous, dialogues audio, simulateur vocal",
+            "imageAlt": "Écran d’accueil de ProLang sur Android : progression d’apprentissage, expression clé du jour et pratique express",
             "url": "https://github.com/andoajpr2/business-lang-android",
             "status": "Application Android",
             "id": "5"

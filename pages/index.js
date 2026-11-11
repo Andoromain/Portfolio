@@ -159,11 +159,20 @@ export default function Home() {
             </ul>
 
             <ul className="mt-16 grid grid-cols-1 gap-x-10 gap-y-16 tablet:grid-cols-2 laptop:mt-20">
-              {projects.map((project, index) => (
-                <li key={project.id}>
-                  <WorkCard project={project} number={pad(featured.length + index + 1)} />
-                </li>
-              ))}
+              {projects.map((project, index) => {
+                // An odd card out spans the full width instead of leaving a gap.
+                const wide =
+                  projects.length % 2 === 1 && index === projects.length - 1;
+                return (
+                  <li key={project.id} className={wide ? "tablet:col-span-2" : ""}>
+                    <WorkCard
+                      project={project}
+                      number={pad(featured.length + index + 1)}
+                      featured={wide}
+                    />
+                  </li>
+                );
+              })}
             </ul>
 
             {data.otherProjects && data.otherProjects.length > 0 && (

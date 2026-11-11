@@ -99,7 +99,23 @@
             "status": "Projet personnel"
         },
         {
-            "id": "5",
+            "title": "ProLang",
+            "description": "Application Android pour maîtriser le français de la communication professionnelle : parcours de leçons, flashcards à répétition espacée (SM-2), quiz, textes à trous, dialogues audio, simulateur de conversation avec réponse vocale, générateur d’e-mails et radar de compétences. Fonctionne hors ligne.",
+            "tags": [
+                "Kotlin",
+                "Jetpack Compose",
+                "Material 3",
+                "Room",
+                "Synthèse vocale"
+            ],
+            "imageSrc": "/images/projects/prolang.webp",
+            "imageAlt": "Visuel de ProLang : flashcards SM-2, quiz et textes à trous, dialogues audio, simulateur vocal",
+            "url": "https://github.com/andoajpr2/business-lang-android",
+            "status": "Application Android",
+            "id": "5"
+        },
+        {
+            "id": "6",
             "title": "Plateforme SDA",
             "description": "Modules métier développés chez Trilogy Consulting pour DFC Mada : client, ticket, social, administratif et juridique. Connexion Microsoft, notifications en temps réel et chatbot.",
             "tags": [
@@ -116,7 +132,7 @@
             "status": "Trilogy Consulting"
         },
         {
-            "id": "6",
+            "id": "7",
             "title": "Katro",
             "description": "Le jeu de semailles des hauts plateaux malgaches, jouable contre une IA réglable en trois niveaux (minimax avec élagage alpha-bêta).",
             "tags": [
@@ -131,7 +147,7 @@
             "status": "Open source"
         },
         {
-            "id": "7",
+            "id": "8",
             "title": "Fanorona",
             "description": "Le jeu de stratégie national de Madagascar, avec ses règles de capture par approche et par retrait, et sa variante Fanoron-telo.",
             "tags": [
@@ -145,7 +161,7 @@
             "status": "Open source"
         },
         {
-            "id": "8",
+            "id": "9",
             "title": "SCRIPT-UTILS",
             "description": "Scripts Bash pour automatiser le quotidien d’un développeur : création de projets Laravel, hôtes virtuels Nginx et Apache, administration système et alerte d’espace disque via un timer systemd. Installation en une commande.",
             "tags": [
@@ -191,6 +207,7 @@
             "TypeScript",
             "Python",
             "Java",
+            "Kotlin",
             "Bash",
             "HTML5",
             "CSS"
@@ -205,7 +222,8 @@
             "FastAPI",
             "Django",
             "Flutter",
-            "PySide6 / Qt"
+            "PySide6 / Qt",
+            "Jetpack Compose"
         ],
         "others": [
             "Git / GitHub / GitLab CI",
@@ -277,6 +295,7 @@
         "Python",
         "FastAPI",
         "Android",
+        "Kotlin",
         "PWA",
         "Flutter",
         "PySide6",

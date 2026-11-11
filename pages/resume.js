@@ -10,15 +10,31 @@ import Footer from "../components/Footer";
 // Data
 import data from "../data/portfolioAndo.json";
 
+const Block = ({ id, number, title, children }) => (
+  <section aria-labelledby={id} className="mt-16 border-t-2 border-fg pt-4">
+    <div className="grid grid-cols-1 gap-6 laptop:grid-cols-12 laptop:gap-10">
+      <div className="laptop:col-span-4">
+        <p className="label muted" aria-hidden="true">
+          {number} —
+        </p>
+        <h2 id={id} className="display mt-2 break-words text-[clamp(1.75rem,9vw,3rem)] leading-[0.95]">
+          {title}
+        </h2>
+      </div>
+      <div className="laptop:col-span-8">{children}</div>
+    </div>
+  </section>
+);
+
 const SkillGroup = ({ title, items }) =>
   items && items.length > 0 ? (
-    <div>
-      <h3 className="text-base font-medium">{title}</h3>
+    <div className="border-t border-fg/20 py-5 first:border-t-0 first:pt-0">
+      <h3 className="label muted">{title}</h3>
       <ul className="mt-3 flex flex-wrap gap-2">
         {items.map((item) => (
           <li
             key={item}
-            className="whitespace-nowrap rounded-full bg-slate-100 px-3 py-1 text-sm text-slate-700 dark:bg-slate-900 dark:text-slate-300"
+            className="label whitespace-nowrap border border-fg/40 px-2 py-1 text-[0.8125rem]"
           >
             {item}
           </li>
@@ -37,11 +53,8 @@ const Resume = () => {
     }
   }, [showResume, router]);
 
-  const sectionTitle =
-    "text-sm font-medium uppercase tracking-[0.05em] text-slate-500 dark:text-slate-400";
-
   return (
-    <div className={data.showCursor ? "cursor-none" : ""}>
+    <div id="haut" className={data.showCursor ? "cursor-none" : ""}>
       {data.showCursor && <Cursor />}
       <Head>
         <title>{`CV · ${name} RAZAFINANDRASANA`}</title>
@@ -50,20 +63,27 @@ const Resume = () => {
       <div className="container">
         <Header />
 
-        <main className="mx-auto mt-10 max-w-4xl rounded-3xl bg-slate-50 p-6 tablet:p-12 laptop:p-16 dark:bg-slate-900/60">
-          <h1 className="break-words text-[1.75rem] font-medium mob:text-[2rem] leading-[1.1] tracking-[-0.02em] tablet:text-5xl">
-            {name} RAZAFINANDRASANA
+        <main className="pt-6">
+          <div className="label muted flex items-baseline justify-between gap-4">
+            <span aria-hidden="true">CV — Curriculum vitae</span>
+            <span>{new Date().getFullYear()}</span>
+          </div>
+
+          <h1 className="display mt-6 break-words text-[clamp(2.25rem,10vw,8rem)] leading-[0.88] tracking-[-0.03em]">
+            {name}
+            <span className="block text-[0.45em] leading-tight tracking-[-0.01em]">
+              Razafinandrasana
+            </span>
           </h1>
-          <p className="mt-4 text-xl leading-snug">{resume.tagline}</p>
-          <p className="muted mt-3 max-w-2xl text-lg leading-relaxed">
+          <p className="display highlight mt-6 inline-block text-2xl tablet:text-3xl">
+            Développeur Full Stack
+          </p>
+          <p className="mt-8 max-w-3xl text-xl leading-[1.45]">
             {resume.description}
           </p>
           <Socials className="mt-6" />
 
-          <section aria-labelledby="cv-experience" className="mt-14">
-            <h2 id="cv-experience" className={sectionTitle}>
-              Expérience
-            </h2>
+          <Block id="cv-experience" number="01" title="Expérience">
             {resume.experiences.map(({ id, dates, type, position, bullets }) => (
               <ProjectResume
                 key={id}
@@ -73,41 +93,29 @@ const Resume = () => {
                 bullets={bullets}
               />
             ))}
-          </section>
+          </Block>
 
-          <section aria-labelledby="cv-formation" className="mt-14">
-            <h2 id="cv-formation" className={sectionTitle}>
-              Formation
-            </h2>
-            <div className="mt-6 grid gap-2 tablet:grid-cols-[minmax(0,1fr)_minmax(0,2fr)] tablet:gap-8">
-              <p className="text-base text-slate-500 tabular-nums dark:text-slate-400">
-                {resume.education.universityDate}
-              </p>
-              <div>
-                <h3 className="text-lg font-medium leading-snug">
-                  {resume.education.universityName}
-                </h3>
-                <p className="muted mt-1 text-base leading-relaxed">
-                  {resume.education.universityPara}
-                </p>
-              </div>
-            </div>
-          </section>
+          <Block id="cv-formation" number="02" title="Formation">
+            <p className="label muted">{resume.education.universityDate}</p>
+            <h3 className="mt-2 text-2xl font-semibold leading-snug">
+              {resume.education.universityName}
+            </h3>
+            <p className="muted mt-2 text-lg leading-relaxed">
+              {resume.education.universityPara}
+            </p>
+          </Block>
 
-          <section aria-labelledby="cv-competences" className="mt-14">
-            <h2 id="cv-competences" className={sectionTitle}>
-              Compétences
-            </h2>
-            <div className="mt-6 grid gap-8 tablet:grid-cols-3">
-              <SkillGroup title="Langages" items={resume.languages} />
-              <SkillGroup title="Frameworks" items={resume.frameworks} />
-              <SkillGroup title="Outils" items={resume.others} />
-            </div>
-          </section>
+          <Block id="cv-competences" number="03" title="Compétences">
+            <SkillGroup title="Langages" items={resume.languages} />
+            <SkillGroup title="Frameworks" items={resume.frameworks} />
+            <SkillGroup title="Outils" items={resume.others} />
+          </Block>
 
-          <p className="mt-14">
+          <p className="mt-16">
             <Link href="/#projets">
-              <a className="text-link text-base">Voir mes projets</a>
+              <a className="btn btn-primary">
+                Voir mes projets <span aria-hidden="true">→</span>
+              </a>
             </Link>
           </p>
         </main>

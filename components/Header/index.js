@@ -81,42 +81,58 @@ const Header = () => {
   const { name, showResume } = data;
 
   const links = [
-    { href: "/#projets", label: "Projets" },
-    { href: "/#a-propos", label: "À propos" },
-    ...(showResume ? [{ href: "/resume", label: "CV", next: true }] : []),
-    { href: "/#contact", label: "Contact" },
+    { href: "/#projets", label: "Projets", number: "02" },
+    { href: "/#a-propos", label: "À propos", number: "03" },
+    ...(showResume
+      ? [{ href: "/resume", label: "CV", number: "→", next: true }]
+      : []),
+    { href: "/#contact", label: "Contact", number: "04" },
   ];
 
-  const renderLink = (link, className, onClick) =>
-    link.next ? (
+  const renderLink = (link, className, onClick) => {
+    const content = (
+      <>
+        <span aria-hidden="true" className="muted group-hover:text-current">
+          {link.number}
+        </span>
+        {link.label}
+      </>
+    );
+    return link.next ? (
       <Link href={link.href}>
         <a className={className} onClick={onClick}>
-          {link.label}
+          {content}
         </a>
       </Link>
     ) : (
       <a href={link.href} className={className} onClick={onClick}>
-        {link.label}
+        {content}
       </a>
     );
+  };
 
   return (
-    <header className="sticky top-0 z-20 -mx-4 bg-white/85 px-4 backdrop-blur dark:bg-black/85 tablet:-mx-6 tablet:px-6 laptop:-mx-8 laptop:px-8">
+    <header className="sticky top-0 z-20 -mx-4 border-b-2 border-fg bg-bg/90 px-4 backdrop-blur tablet:-mx-6 tablet:px-6 laptop:-mx-10 laptop:px-10">
       <nav
         aria-label="Navigation principale"
-        className="flex h-16 items-center justify-between gap-4"
+        className="flex h-14 items-center justify-between gap-4"
       >
         <Link href="/">
-          <a className="rounded-sm text-lg font-medium">{name}.</a>
+          <a className="display text-base tablet:text-lg">
+            {name}
+            <span aria-hidden="true" className="highlight ml-1">
+              .
+            </span>
+          </a>
         </Link>
 
-        <div className="flex items-center gap-1">
-          <ul className="hidden items-center gap-1 tablet:flex">
+        <div className="flex items-center">
+          <ul className="hidden items-center tablet:flex">
             {links.map((link) => (
               <li key={link.href}>
                 {renderLink(
                   link,
-                  "inline-flex min-h-[2.75rem] items-center rounded-full px-4 text-base transition-colors duration-150 ease-out hover:bg-slate-100 dark:hover:bg-slate-900"
+                  "group label inline-flex min-h-[2.75rem] items-center gap-2 px-3 transition-colors duration-150 ease-out hover:bg-accent hover:text-on-accent"
                 )}
               </li>
             ))}
@@ -133,13 +149,16 @@ const Header = () => {
                 >
                   <MenuIcon open={open} />
                 </Popover.Button>
-                <Popover.Panel className="absolute right-0 top-full z-30 mt-2 w-56 rounded-2xl border border-slate-200 bg-white p-2 shadow-lg dark:border-slate-800 dark:bg-slate-900">
+                <Popover.Panel className="absolute right-0 top-full z-30 mt-2 w-60 border-2 border-fg bg-bg">
                   <ul>
                     {links.map((link) => (
-                      <li key={link.href}>
+                      <li
+                        key={link.href}
+                        className="border-b border-fg/20 last:border-b-0"
+                      >
                         {renderLink(
                           link,
-                          "flex min-h-[2.75rem] items-center rounded-xl px-4 text-base hover:bg-slate-100 dark:hover:bg-slate-800",
+                          "group label flex min-h-[3rem] items-center gap-3 px-4 hover:bg-accent hover:text-on-accent",
                           () => close()
                         )}
                       </li>

@@ -58,8 +58,8 @@
                 "DXVK / Vulkan",
                 "GitLab CI"
             ],
-            "imageSrc": "/images/projects/to-port.svg",
-            "imageAlt": "",
+            "imageSrc": "/images/projects/to-port.webp",
+            "imageAlt": "Visuel du projet TO Port : Android, Wine, Box64, DirectX 9 vers Vulkan",
             "url": "",
             "status": "Projet personnel"
         },
@@ -92,8 +92,8 @@
                 "Pusher",
                 "SSO Microsoft"
             ],
-            "imageSrc": "/images/projects/plateforme-sda.svg",
-            "imageAlt": "",
+            "imageSrc": "/images/projects/plateforme-sda.webp",
+            "imageAlt": "Visuel de la plateforme SDA et de ses cinq modules : client, ticket, social, administratif, juridique",
             "url": "",
             "status": "Trilogy Consulting"
         },
@@ -208,5 +208,40 @@
             "description": "Application web en Python et Django",
             "url": "https://andoromain.pythonanywhere.com/"
         }
+    ],
+    "intro": "Je conçois des applications web et mobiles de bout en bout, du back-end Laravel aux interfaces Vue.js et React, jusqu’au déploiement. Actuellement chez Trilogy Consulting, à Antananarivo.",
+    "aboutStatement": "Je construis des applications complètes, du serveur à l’écran, avec rigueur et le souci du détail.",
+    "facts": [
+        {
+            "label": "Poste",
+            "value": "Développeur Full Stack, Trilogy Consulting",
+            "detail": "Depuis juin 2023"
+        },
+        {
+            "label": "Formation",
+            "value": "Master en informatique, ENI Fianarantsoa",
+            "detail": "2021 – 2023"
+        },
+        {
+            "label": "Basé à",
+            "value": "Antananarivo, Madagascar",
+            "detail": "UTC+3"
+        }
+    ],
+    "stack": [
+        "Laravel",
+        "Vue.js",
+        "Vuetify",
+        "React",
+        "TypeScript",
+        "Inertia.js",
+        "Next.js",
+        "Python",
+        "FastAPI",
+        "Android",
+        "PWA",
+        "Ansible",
+        "Docker",
+        "GitLab CI"
     ]
 }

@@ -2,8 +2,8 @@
     "name": "Ando Romain",
     "headerTaglineOne": "Bonjour 👋",
     "headerTaglineTwo": "Je suis Ando Romain RAZAFINANDRASANA",
-    "headerTaglineThree": "Developpeur web",
-    "headerTaglineFour": "",
+    "headerTaglineThree": "Développeur Full Stack",
+    "headerTaglineFour": "Laravel · Vue.js · React · TypeScript",
     "showBlog": false,
     "darkMode": true,
     "socials": [
@@ -30,88 +30,127 @@
     ],
     "projects": [
         {
-            "id": "1",
-            "title": "Project IHM",
+            "title": "AMIH Caisse",
+            "description": "Gestion de caisse des micro-projets : Laravel 13, Inertia, React 19, TypeScript, MUI, PWA et APK Android",
+            "imageSrc": "/images/projects/amih-caisse.svg",
+            "url": "",
+            "id": "1"
+        },
+        {
+            "title": "TO Port",
+            "description": "Portage Android non officiel d'un jeu PC (projet de fan) : Wine, Box64, DXVK/Vulkan, Java/NDK, GitLab CI",
+            "imageSrc": "/images/projects/to-port.svg",
+            "url": "",
+            "id": "2"
+        },
+        {
+            "title": "Family Dépense",
+            "description": "Application PWA de budget familial hors ligne : React, TypeScript, Dexie, Supabase, Recharts",
+            "imageSrc": "/images/projects/family-depense.svg",
+            "url": "",
+            "id": "3"
+        },
+        {
+            "title": "Plateforme SDA — DFC Mada",
+            "description": "Modules client, ticket, social, administratif et juridique : Laravel, Vue 3, Inertia, Vuetify",
+            "imageSrc": "/images/projects/plateforme-sda.svg",
+            "url": "",
+            "id": "4"
+        },
+        {
+            "title": "Jeux malgaches",
+            "description": "Fanorona, Fanorona Telo et Katro jouables sur le web : React, TypeScript",
+            "imageSrc": "/images/projects/jeux-malgaches.svg",
+            "url": "https://github.com/andoajpr2/JEUX-FANORONA",
+            "id": "5"
+        },
+        {
+            "id": "6",
+            "title": "Projet IHM",
             "description": "Web Design",
             "imageSrc": "https://s3-alpha.figma.com/hub/file/3374196297/c0221c7c-0b56-476d-ae95-fd77d40ed04e-cover.png",
             "url": "https://www.figma.com/community/file/1231024699160927123"
         },
         {
-            "id": "2",
+            "id": "7",
             "title": "Projet Gestion Bancaire",
-            "description": "Development web avec Django",
-            "imageSrc": "https://gestionuserandoromain.000webhostapp.com/public/gestionbanc.png",
+            "description": "Développement web avec Django",
+            "imageSrc": "/images/projects/gestion-bancaire.svg",
             "url": "https://andoajpr.pythonanywhere.com/"
         },
         {
-            "id": "3",
-            "title": "Project Gestion Archives et courriers",
-            "description": "Development web avec Laravel",
-            "imageSrc": "https://gestionuserandoromain.000webhostapp.com/public/gestionarchiv.png",
+            "id": "8",
+            "title": "Projet Gestion Archives et courriers",
+            "description": "Développement web avec Laravel",
+            "imageSrc": "/images/projects/archives-courriers.svg",
             "url": "http://gestion-archives-et-courriers-gitww-andoajpr-dev.apps.sandbox-m2.ll9k.p1.openshiftapps.com/public/"
         },
         {
-            "id": "4",
-            "title": "Project Gestion des utilisateurs ",
-            "description": "Development web avec React et Laravel",
-            "imageSrc": "https://gestionuserandoromain.000webhostapp.com/public/gestionuser.png",
+            "id": "9",
+            "title": "Projet Gestion des utilisateurs",
+            "description": "Développement web avec React et Laravel",
+            "imageSrc": "/images/projects/gestion-utilisateurs.svg",
             "url": "https://gestion-utilisateur.netlify.app/"
         },
-           {
-            "id": "5",
-            "title": "Project Gestion de materiels informatique et vente de materiel ",
-            "description": "Development web avec Python/Django",
-            "imageSrc": "https://gestionuserandoromain.000webhostapp.com/public/ventemat.png",
+        {
+            "id": "10",
+            "title": "Projet Gestion de matériel informatique et vente de matériel",
+            "description": "Développement web avec Python/Django",
+            "imageSrc": "/images/projects/materiel-informatique.svg",
             "url": "https://andoromain.pythonanywhere.com/"
         }
     ],
-    "services": [
-   
-    ],
-    "aboutpara": "Je suis actuellement en deuxième année en Master professionnel à l'Ecole Nationale d'Informatique, Je recherche un stage de fin d'etude",
+    "services": [],
+    "aboutpara": "Développeur Full Stack chez Trilogy Consulting depuis juin 2023 et diplômé d'un master en informatique de l'École Nationale d'Informatique (ENI) de Fianarantsoa. Je conçois des applications web et mobiles de bout en bout, du back-end Laravel aux interfaces Vue.js et React, jusqu'au déploiement et à l'intégration continue.",
     "resume": {
-        "tagline": "👋  I'm a software engineer, product designer, and maker.",
-        "description": "I have delivered world-class user experiences to millions of people. Well-versed with React, Javascript, and most of the Web frameworks.",
+        "tagline": "👋 Développeur Full Stack, diplômé de l'École Nationale d'Informatique",
+        "description": "Je crée des applications web et mobiles complètes, avec rigueur et créativité : back-end Laravel, interfaces Vue.js et React, applications PWA et Android, déploiement automatisé.",
         "experiences": [
             {
                 "id": "1",
-                "dates": "March 2022 - Present",
-                "type": "Full Time",
-                "position": "Frontend Engineer at X",
+                "dates": "Juin 2023 - Aujourd'hui",
+                "type": "Antananarivo, Madagascar",
+                "position": "Développeur Full Stack chez Trilogy Consulting",
                 "bullets": [
-                    "Worked on the frontend of a React application",
-                    "Worked on the frontend of a React application"
-                ]
-            },
-            {
-                "id": "2",
-                "dates": "March 2020 - March 2022",
-                "type": "Full Time",
-                "position": "Frontend Engineer at X",
-                "bullets": [
-                    "Worked on the frontend of a React application"
+                    "Développement de la plateforme SDA pour DFC Mada : modules client, ticket, social, administratif et juridique",
+                    "Back-end Laravel (Jetstream, Sanctum, rôles et permissions) et interfaces Vue 3, Inertia et Vuetify",
+                    "Connexion Microsoft (SSO), notifications en temps réel avec Pusher, e-mails transactionnels avec Brevo",
+                    "Déploiement et configuration des serveurs avec Ansible"
                 ]
             }
         ],
         "education": {
-            "universityName": "University X",
-            "universityDate": "2016-2020",
-            "universityPara": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry&apos;s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book"
+            "universityName": "École Nationale d'Informatique (ENI) Fianarantsoa",
+            "universityDate": "2018 - 2023",
+            "universityPara": "Master en informatique (2021 - 2023) et licence professionnelle en informatique (2018 - 2020)."
         },
         "languages": [
-            "Javascript",
+            "PHP",
+            "JavaScript",
+            "TypeScript",
+            "Python",
+            "Java",
             "HTML5",
-            "CSS",
-            "Python"
+            "CSS"
         ],
         "frameworks": [
+            "Laravel",
+            "Vue.js",
+            "Vuetify",
+            "Inertia.js",
             "React",
-            "Typescript",
-            "NodeJs"
+            "Next.js",
+            "FastAPI",
+            "Django"
         ],
         "others": [
-            "Figma",
-            "AWS"
+            "Git / GitHub / GitLab CI",
+            "Ansible",
+            "Docker",
+            "Android",
+            "PWA",
+            "Figma"
         ]
-    }
+    },
+    "showResume": true
 }

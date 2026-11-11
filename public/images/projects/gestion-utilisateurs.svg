@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="800" viewBox="0 0 1200 800" font-family="Inter, Segoe UI, Roboto, Helvetica, Arial, sans-serif">
+<defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0b1120"/><stop offset="0.55" stop-color="#0c4a6e"/><stop offset="1" stop-color="#0ea5e9"/></linearGradient></defs>
+<rect width="1200" height="800" fill="url(#g)"/>
+<circle cx="1040" cy="150" r="230" fill="#ffffff" fill-opacity="0.06"/>
+<circle cx="1110" cy="700" r="160" fill="#ffffff" fill-opacity="0.05"/>
+<rect x="80" y="250" width="90" height="8" rx="4" fill="#0ea5e9"/>
+<text x="80" y="370" font-size="92" font-weight="700" fill="#ffffff">Gestion des utilisateurs</text>
+<text x="80" y="450" font-size="38" fill="#ffffff" fill-opacity="0.8">Comptes, rôles et accès</text>
+<rect x="80" y="560" width="99" height="52" rx="26" fill="#ffffff" fill-opacity="0.12" stroke="#ffffff" stroke-opacity="0.35"/><text x="129.5" y="594" text-anchor="middle" font-size="26" fill="#ffffff">React</text><rect x="193" y="560" width="130" height="52" rx="26" fill="#ffffff" fill-opacity="0.12" stroke="#ffffff" stroke-opacity="0.35"/><text x="258.0" y="594" text-anchor="middle" font-size="26" fill="#ffffff">Laravel</text><rect x="337" y="560" width="146" height="52" rx="26" fill="#ffffff" fill-opacity="0.12" stroke="#ffffff" stroke-opacity="0.35"/><text x="410.0" y="594" text-anchor="middle" font-size="26" fill="#ffffff">API REST</text>
+</svg>
